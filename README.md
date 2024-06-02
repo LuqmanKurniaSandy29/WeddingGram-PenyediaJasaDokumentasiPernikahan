@@ -8,8 +8,8 @@
 - Muhammad Raffi Zeinuri Misbah
 
 ## Link meet
-- RABU 10:30 - 9:30 http://meet.google.com/pfs-egxo-vnv
-- setiap senin-jumat semua anggota kelompok wajib mgenginputkan laporan di LMS Gamelab agar absensi tidak kosong
+- RABU 10:30 - 11:30 http://meet.google.com/pfs-egxo-vnv
+- Setiap senin-jumat semua anggota kelompok wajib mgenginputkan laporan di LMS Gamelab agar absensi tidak kosong
 
 ## Deadline
 - 14 Juni 2024
