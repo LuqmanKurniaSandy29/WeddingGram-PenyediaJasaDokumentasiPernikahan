@@ -1,0 +1,32 @@
+/* .custom-button {
+    background-color: #D5A351;
+    border: none;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px #000;
+
+    &:hover {
+        background-color: #F3BB62;
+        box-shadow: 0 3px 5px #000;
+    }
+} */
+
+.custom-card-about {
+    box-shadow: 0 2px 4px #000;
+    transition: transform 0.3s ease;
+    border-radius: 5px;
+    border: none;
+
+    &:hover {
+        box-shadow: 0 3px 5px #000;
+        transform: scale(1.03);;
+    }
+}
+
+.custom-card-header-about {
+    background-color: #D5A351;
+    color: #FFF;
+}
+
+.custom-card-description-about {
+    line-height: 1.8;
+}

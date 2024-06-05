@@ -1,0 +1,14 @@
+.bg-color {
+    background-color: #D5A351;
+}
+
+.custom-card-header-faq {
+    background-color: #FFF7E6;
+    color: #D5A351;
+    cursor: pointer;
+}
+
+.custom-card-description-faq {
+    line-height: 1.8;
+    color: #D5A351;
+}

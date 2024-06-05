@@ -1,0 +1,11 @@
+.bg-color {
+    background-color: #D5A351;
+}
+
+.anchor-hero {
+    color: #000;
+
+    &:hover {
+        color: #000;
+    }
+}

@@ -1,0 +1,16 @@
+.custom-bg {
+    background-color: #D5A351;
+    color: #FFF;
+}
+
+.footer-height {
+    height: 50px;
+}
+
+.anchor-product {
+    color: #000;
+
+    &:hover {
+        color: #000;
+    }
+}
