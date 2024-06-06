@@ -2,13 +2,37 @@
     background-color: #D5A351;
 }
 
-.custom-card-header-faq {
-    background-color: #FFF7E6;
+.custom-header-faq {
+    background-color: #F9E5B9;
     color: #D5A351;
     cursor: pointer;
 }
 
-.custom-card-description-faq {
-    line-height: 1.8;
-    color: #D5A351;
+.accordion-button {
+    background-color: #F9E5B9 !important;
+  }
+  
+.accordion-button:not(.collapsed) {
+    background-color: #F9E5B9 !important;
+}
+
+.accordion-button-bg, 
+.accordion-button-active-bg, 
+.body-bg {
+    background-color: #D5A351;
+}
+
+.accordion-button:link,
+.accordion-button:visited,
+.accordion-button:hover,
+.accordion-button:active {
+  background-color: #F9E5B9 !important;
+  text-decoration: none !important;
+  border: hidden !important;
+  border-color: #FFF !important;
+  box-shadow: 0px !important;
+}
+
+.accordion-button:focus {
+  box-shadow: 0 0 0 0.25rem #F9E5B9 !important;
 }

@@ -1,17 +1,8 @@
-import React, { useState } from "react";
-import "../FAQ/FAQ.css"
-import { Container, Row, Col, Card } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
+import "../FAQ/FAQ.css";
+import { Container, Row, Col, Accordion } from "react-bootstrap";
 
 function FAQ() {
-    // State untuk mengontrol tampilan jawaban
-    const [showAnswer, setShowAnswer] = useState({});
-
-    // Fungsi untuk menampilkan jawaban
-    const toggleAnswer = (id) => {
-        setShowAnswer({ ...showAnswer, [id]: !showAnswer[id] });
-    };
-
     const faqList = [
         {
             id: 1,
@@ -41,7 +32,7 @@ function FAQ() {
     ];
 
     return (
-        <div className="bg-color py-3">
+        <section className="bg-color py-3" id="faq">
             <Container>
                 <Row className="my-5 mx-2">
                     <Col lg={5} md={12} sm={12} xs={12}>
@@ -49,22 +40,22 @@ function FAQ() {
                         <p className="FAQ-description text-light text-justify my-4">Temukan beragam jawaban untuk pertanyaan umum yang mungkin Anda miliki mengenai layanan kami, dan dapatkan pemahaman mendalam tentang apa yang membuat WeddingGram menjadi pilihan utama dalam dokumentasi pernikahan Anda</p>
                     </Col>
                     <Col lg={7} md={12} sm={12} xs={12} className="px-2">
-                        {faqList.map((faq) => (
-                            <Card key={faq.id} className="custom-card-faq mb-3">
-                                <Card.Header className="custom-card-header-faq" onClick={() => toggleAnswer(faq.id)}>
-                                    {faq.question}
-                                </Card.Header>
-                                    {showAnswer[faq.id] && (
-                                <Card.Body className="custom-card-description-faq">
-                                    {faq.answer}
-                                </Card.Body>
-                                )}
-                            </Card>
-                        ))}
+                        <Accordion>
+                            {faqList.map((faq) => (
+                                <Accordion.Item eventKey={faq.id.toString()} key={faq.id} className="custom-card-faq mb-3">
+                                    <Accordion.Header>
+                                        {faq.question}
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+                                        {faq.answer}
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                            ))}
+                        </Accordion>
                     </Col>
                 </Row>
             </Container>
-        </div>
+        </section>
     );
 }
 

@@ -1,9 +1,10 @@
-import React from "react";
-import {Container, Row, Col, Form } from "react-bootstrap";
-import "../Contact/Contact.css"
+import React, { useState } from "react";
+import { Container, Row, Col, Form } from "react-bootstrap";
+import Swal from 'sweetalert2';
+import emailjs from 'emailjs-com';
+import "../Contact/Contact.css";
 
 const Contact = () => {
-
   const buttonStyle = {
     backgroundColor: '#D5A351',
     border: 'none',
@@ -19,32 +20,50 @@ const Contact = () => {
     boxShadow: '0 3px 5px #000',
   };
 
-  const [isHovered, setIsHovered] = React.useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [form, setForm] = useState({
+    nama: '',
+    email: '',
+    pesan: ''
+  });
 
-  // const onSubmit = async (event) => {
-  //   event.preventDefault();
-  //   const formData = new FormData(event.target);
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-  //   formData.append("access_key", "7b23f0c2-3a8e-4b7c-a068-0b6b05eecf92");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { nama, email, pesan } = form;
 
-  //   const object = Object.fromEntries(formData);
-  //   const json = JSON.stringify(object);
+    if (!nama || !email || !pesan) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Mohon untuk mengisi semua kolom input!',
+      });
+      return;
+    }
 
-  //   const res = await fetch("https://api.web3forms.com/submit", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //     },
-  //     body: json,
-  //   }).then((res) => res.json());
+    emailjs.send('service_ykdx29m', 'template_q6bzg6l', form, 'UY3FHm26HbtjSTJiE')
+      .then((result) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Terkirim!',
+          text: 'Pesan Anda telah berhasil dikirim.',
+        });
+        setForm({ nama: '', email: '', pesan: '' }); // Hapus form
+      }, (error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Terjadi kesalahan, pesan tidak terkirim.',
+        });
+      });
+  };
 
-  //   if (res.success) {
-  //     console.log("Success", res);
-  //   }
-  // };
   return (
-    <Container style={{ width: "90%" }} className="mb-5 text-center">
+    <section id="contact" className="py-5">
+      <Container style={{ width: "90%" }} className="mb-5 text-center">
       <h2 className="mt-5">Contact Us</h2>
       <p className="mb-5 text-center">Tim kami selalu siap membantu Anda dengan senang hati. Kami selalu berusaha untuk meningkatkan layanan kami dan menghargai masukan Anda. Bagikan pertanyaan, saran, atau pengalaman Anda dengan layanan kami. Kami siap membantu dan memastikan Anda mendapatkan yang terbaik.</p>
       <Row md={2} sm={1} xs={1}>
@@ -57,46 +76,47 @@ const Contact = () => {
             className="border-map"
           ></iframe>
         </Col>
-        <Col lg={7}>
-          <Form /*onSubmit={onSubmit}*/>
+        <Col lg={7} className="text-start">
+          <Form onSubmit={handleSubmit}>
             <Form.Group as={Row} className="mb-2" controlId="formPlaintextNama">
-              <Form.Label column sm="12" className="text-left">
+              <Form.Label column sm="12">
                 Nama
               </Form.Label>
               <Col sm="12">
-                <Form.Control type="text" placeholder="Masukkan Nama" />
+                <Form.Control type="text" name="nama" placeholder="Masukkan Nama" value={form.nama} onChange={handleChange} />
               </Col>
             </Form.Group>
 
             <Form.Group as={Row} className="mb-2" controlId="formPlaintextemail">
-              <Form.Label column sm="12" className="text-left">
+              <Form.Label column sm="12">
                 Email
               </Form.Label>
               <Col sm="12">
-                <Form.Control type="email" placeholder="Masukkan Email" />
+                <Form.Control type="email" name="email" placeholder="Masukkan Email" value={form.email} onChange={handleChange} />
               </Col>
             </Form.Group>
 
             <Form.Group as={Row} className="mb-2" controlId="formPlaintextMessage">
-              <Form.Label column sm="12" className="text-left">
+              <Form.Label column sm="12">
                 Pesan
               </Form.Label>
               <Col sm="12">
-                <Form.Control as="textarea" rows={3} placeholder="Masukkan Pesan" />
+                <Form.Control as="textarea" name="pesan" rows={3} placeholder="Masukkan Pesan" value={form.pesan} onChange={handleChange} />
               </Col>
             </Form.Group>
-            <Col sm="12"  as={Row} className="mb-2">
-              <button type="submit" className="px-5 my-2"
+            <Col sm="12" as={Row} className="mb-2">
+              <button type="submit" className="px-5 my-2 mx-3"
                 style={isHovered ? { ...buttonStyle, ...hoverStyle } : buttonStyle}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}>
-                  Kirim
+                Kirim
               </button>
             </Col>
           </Form>
         </Col>
       </Row>
     </Container>
+    </section>
   );
 };
 

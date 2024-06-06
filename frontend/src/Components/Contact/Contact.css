@@ -16,3 +16,13 @@
     height: 350px;
     box-shadow: 0 2px 4px #000;
 }
+
+.swal2-styled.swal2-confirm {
+    background-color: #D5A351 !important;
+    border: none !important;
+    padding: 10px 20px !important;
+    box-shadow: 0 2px 4px #000 !important;
+    border-radius: 2px !important;
+    color: #FFF !important;
+    width: 150px !important;
+}

@@ -30,3 +30,7 @@
 .custom-card-description-about {
     line-height: 1.8;
 }
+
+.text-justify {
+    text-align: justify;
+}

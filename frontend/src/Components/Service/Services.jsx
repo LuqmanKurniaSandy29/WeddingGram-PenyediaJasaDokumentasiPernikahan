@@ -31,7 +31,7 @@ const Service = () => {
         boxShadow: '0 2px 4px #000',
         borderRadius: '2px',
         color: '#FFF',
-        width: '95%',
+        width: '20%',
     };
     
     const orderButtonHoverStyle = {
@@ -49,8 +49,8 @@ const Service = () => {
     const handleDetailMouseEnter = (index) => setDetailHovered(prevState => ({ ...prevState, [index]: true }));
     const handleDetailMouseLeave = (index) => setDetailHovered(prevState => ({ ...prevState, [index]: false }));
     
-    const handleOrderMouseEnter = (index) => setOrderHovered(prevState => ({ ...prevState, [index]: true }));
-    const handleOrderMouseLeave = (index) => setOrderHovered(prevState => ({ ...prevState, [index]: false }));
+    const handleOrderMouseEnter = () => setOrderHovered(true);
+    const handleOrderMouseLeave = () => setOrderHovered(false);
 
     const packages = [
         {
@@ -115,21 +115,21 @@ const Service = () => {
 
     return (
         <div>
-            <section className='bg-custom py-5'>
-                <Container className='py-3'>
+            <section className='bg-custom py-5' id='services'>
+                <Container className='py-3 mt-5'>
                     <h2 className="services-heading text-center text-light fw-bold">Our Services</h2>
                     <p className="services-description text-center text-light my-4">
                     WeddingGram adalah penyedia dokumentasi profesional yang memastikan setiap momen istimewa dalam pernikahan Anda tertangkap dengan sempurna. Dari fotografi hingga videografi, kami berkomitmen untuk mengabadikan kenangan Anda dengan kualitas terbaik, sehingga setiap detil dari hari bahagia Anda akan tetap hidup selamanya.
                     </p>
                     <Row>
                         {packages.map((pkg, index) => (
-                            <Col md={3} sm={6} className='px-3' key={index}>
-                                <Card style={{ width: '18rem' }}>
+                            <Col lg={3} md={6} sm={12} className='px-2 justify-content-arround text-center' key={index}>
+                                <Card style={{ width: '18rem' }} className='mx-auto my-3'>
                                     <Card.Img variant="top" src={pkg.image} />
                                     <Card.Body>
                                         <Card.Title>{pkg.title}</Card.Title>
                                         <Card.Text>
-                                            <h6>{pkg.price}</h6>
+                                            {pkg.price}
                                         </Card.Text>
                                         <button
                                             className="py-2 px-3 mr-4 fw-semibold"
@@ -157,21 +157,24 @@ const Service = () => {
                                                 </ul>
                                             </Modal.Body>
                                         </Modal>
-                                        <a href="/order">
-                                            <button
-                                                className="py-2 px-3 mr-4 fw-semibold"
-                                                style={orderHovered[index] ? { ...orderButtonStyle, ...orderButtonHoverStyle } : orderButtonStyle}
-                                                onMouseEnter={() => handleOrderMouseEnter(index)}
-                                                onMouseLeave={() => handleOrderMouseLeave(index)}
-                                            >
-                                                Order
-                                            </button>
-                                        </a>
                                     </Card.Body>
                                 </Card>
                             </Col>
                         ))}
                     </Row>
+                    <div className="text-center mt-4">
+                        <p className="text-light">Jangan lewatkan kesempatan emas ini! Klik tombol di bawah untuk segera memesan. Dapatkan penawaran terbaik dan layanan prima hanya dengan satu klik. Pesan sekarang dan nikmati pengalaman luar biasa bersama kami! Klik tombol di bawah dan nikmati semua keuntungan ini!</p>
+                        <a href="/order">
+                            <button
+                                className="py-2 px-3 fw-semibold"
+                                style={orderHovered ? { ...orderButtonStyle, ...orderButtonHoverStyle } : orderButtonStyle}
+                                onMouseEnter={handleOrderMouseEnter}
+                                onMouseLeave={handleOrderMouseLeave}
+                            >
+                                Order
+                            </button>
+                        </a>
+                    </div>
                 </Container>
             </section>
         </div>
