@@ -28,18 +28,18 @@ function Register() {
              <div style={{width:"100%"}} className="m-auto">
              <Form.Group controlId="validationCustom01">
                 <Form.Label className="mt-1">Nama</Form.Label>
-                <Form.Control required type="text" placeholder="Masukkan nama anda" />
-                <Form.Control.Feedback type="invalid">Mohon masukan anda</Form.Control.Feedback>
+                <Form.Control required type="text" placeholder="Masukkan nama Anda" />
+                <Form.Control.Feedback type="invalid">Mohon masukan Anda</Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId="validationCustom02">
                 <Form.Label className="mt-1">Email</Form.Label>
-                <Form.Control required type="text" placeholder="Masukkan alamat email anda" />
-                <Form.Control.Feedback type="invalid">Tolong masukan alamat email anda</Form.Control.Feedback>
+                <Form.Control required type="text" placeholder="Masukkan alamat email Anda" />
+                <Form.Control.Feedback type="invalid">Tolong masukan alamat email Anda</Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId="validationCustom02">
                 <Form.Label className="mt-1">Username</Form.Label>
-                <Form.Control required type="text" placeholder="Masukkan password baru" />
-                <Form.Control.Feedback type="invalid">Tolong masukkan password</Form.Control.Feedback>
+                <Form.Control required type="text" placeholder="Masukkan username Anda" />
+                <Form.Control.Feedback type="invalid">Tolong masukkan username</Form.Control.Feedback>
             </Form.Group>
              </div>
             </Col>
@@ -47,8 +47,8 @@ function Register() {
               <div style={{width:"100%"}} className="m-auto">
               <Form.Group controlId="validationCustom02">
                 <Form.Label className="mt-1">Alamat</Form.Label>
-                <Form.Control required type="text" placeholder="Masukkan alamat anda" />
-                <Form.Control.Feedback type="invalid">Tolong masukkan alamat anda</Form.Control.Feedback>
+                <Form.Control required type="text" placeholder="Masukkan alamat Anda" />
+                <Form.Control.Feedback type="invalid">Tolong masukkan alamat Anda</Form.Control.Feedback>
               </Form.Group>  
               <Form.Group controlId="validationCustom02">
                 <Form.Label className="mt-1">Password</Form.Label>
@@ -57,8 +57,8 @@ function Register() {
               </Form.Group>
               <Form.Group controlId="validationCustom02">
                 <Form.Label className="mt-1">No Telephone</Form.Label>
-                <Form.Control required type="text" placeholder="Masukkan nomor telepon anda" />
-                <Form.Control.Feedback type="invalid">Tolong masukkan nomor telepon anda</Form.Control.Feedback>
+                <Form.Control required type="text" placeholder="Masukkan nomor telepon Anda" />
+                <Form.Control.Feedback type="invalid">Tolong masukkan nomor telepon Anda</Form.Control.Feedback>
               </Form.Group>
               </div>
             </Col>

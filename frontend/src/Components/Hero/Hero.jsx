@@ -39,11 +39,11 @@ const Hero = () => {
               </button>
             </a>
             <h6 className="mx-2 my-3 me-4 text-light">OR</h6>
-            <a href="#service" className="anchor-hero text-light">Explore</a>
+            <a href="#services" className="anchor-hero text-light">Explore</a>
           </div>
         </Col>
         <Col lg={4} md={6} sm={12} xs={12} className="text-center">
-          <img style={{ width: "300px" }} className="rounded-pill" src={LogoHero} alt="Wedding" />
+          <img style={{ width: "300px" }} className="rounded-5" src={LogoHero} alt="Wedding" />
         </Col>
       </Row>
     </Container>
