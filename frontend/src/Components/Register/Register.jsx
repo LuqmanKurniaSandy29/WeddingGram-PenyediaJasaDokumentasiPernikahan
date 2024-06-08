@@ -1,9 +1,6 @@
-import { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
+import React, { useState } from "react";
+import {Container, Row, Col, Form }from "react-bootstrap";
+import "../Register/Register.css"
 
 function Register() {
   const [validated, setValidated] = useState(false);
@@ -14,7 +11,7 @@ function Register() {
       event.preventDefault();
       event.stopPropagation();
     }
-
+ 
     setValidated(true);
   };
 
@@ -29,17 +26,17 @@ function Register() {
              <Form.Group controlId="validationCustom01">
                 <Form.Label className="mt-1">Nama</Form.Label>
                 <Form.Control required type="text" placeholder="Masukkan nama Anda" />
-                <Form.Control.Feedback type="invalid">Mohon masukan Anda</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">Mohon masukan nama Anda</Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId="validationCustom02">
                 <Form.Label className="mt-1">Email</Form.Label>
                 <Form.Control required type="text" placeholder="Masukkan alamat email Anda" />
-                <Form.Control.Feedback type="invalid">Tolong masukan alamat email Anda</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">Mohon masukan alamat email Anda</Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId="validationCustom02">
                 <Form.Label className="mt-1">Username</Form.Label>
                 <Form.Control required type="text" placeholder="Masukkan username Anda" />
-                <Form.Control.Feedback type="invalid">Tolong masukkan username</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">Mohon masukkan username</Form.Control.Feedback>
             </Form.Group>
              </div>
             </Col>
@@ -48,23 +45,27 @@ function Register() {
               <Form.Group controlId="validationCustom02">
                 <Form.Label className="mt-1">Alamat</Form.Label>
                 <Form.Control required type="text" placeholder="Masukkan alamat Anda" />
-                <Form.Control.Feedback type="invalid">Tolong masukkan alamat Anda</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">Mohon masukkan alamat Anda</Form.Control.Feedback>
               </Form.Group>  
               <Form.Group controlId="validationCustom02">
                 <Form.Label className="mt-1">Password</Form.Label>
-                <Form.Control required type="text" placeholder="Masukkan konfirmasi password" />
-                <Form.Control.Feedback type="invalid">Tolong masukkan konfirmasi password</Form.Control.Feedback>
+                <Form.Control required type="text" placeholder="Masukkan password Anda" />
+                <Form.Control.Feedback type="invalid">Mohon masukkan password Anda</Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId="validationCustom02">
-                <Form.Label className="mt-1">No Telephone</Form.Label>
+                <Form.Label className="mt-1">No Telepon</Form.Label>
                 <Form.Control required type="text" placeholder="Masukkan nomor telepon Anda" />
-                <Form.Control.Feedback type="invalid">Tolong masukkan nomor telepon Anda</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">Mohon masukkan nomor telepon Anda</Form.Control.Feedback>
               </Form.Group>
               </div>
             </Col>
           </Row>
           <div className="d-grid text-center my-3 align-item-center justify-content-center"> 
-              <Button style={{ backgroundColor: "#D5A351", border: "none", padding:"7px 60px"}} href="/register">Register</Button>
+            <a href="/register">
+                <button className="custom-button py-2 px-3 fw-semibold">
+                  Registrasi
+                </button>
+            </a>
           </div>
           <p className="text-center">
               Sudah memiliki akun? <a href="/login">Login</a>

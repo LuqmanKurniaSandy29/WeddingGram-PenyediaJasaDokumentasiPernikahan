@@ -1,3 +1,37 @@
 .bg-custom {
     background-color: #D5A351;
 }
+
+.detail-button {
+    background-color: #D5A351;
+    border: none;
+    margin: 5px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px #000;
+    border-radius: 2px;
+    color: #FFF;
+    width: 95%;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.detail-button:hover {
+    background-color: #F3BB62;
+    box-shadow: 0 3px 5px #000;
+}
+
+.order-button {
+    background-color: #4CAF50;
+    border: none;
+    margin: 5px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px #000;
+    border-radius: 2px;
+    color: #FFF;
+    width: 20%;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.order-button:hover {
+    background-color: #61DF65;
+    box-shadow: 0 3px 5px #000;
+}

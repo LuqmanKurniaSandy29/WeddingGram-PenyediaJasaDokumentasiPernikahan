@@ -9,3 +9,28 @@
         color: #000;
     }
 }
+
+.border-image {
+    transform: rotate(5deg); 
+    border-top: 20px solid #FFF;
+    border-right: 20px solid #FFF;
+    border-left: 20px solid #FFF;
+    border-bottom: 50px solid #FFF; 
+    box-shadow: 0 3px 9px #000;
+}
+
+  .custom-hero-button {
+    background-color: #FFF7E6;
+    border: none;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px #000;
+    border-radius: 2px;
+    color: #D5A351;
+    width: 150px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+
+    &:hover {
+        background-color: #FFF;
+        box-shadow: 0 3px 5px #000;
+    }
+}

@@ -5,22 +5,6 @@ import emailjs from 'emailjs-com';
 import "../Contact/Contact.css";
 
 const Contact = () => {
-  const buttonStyle = {
-    backgroundColor: '#D5A351',
-    border: 'none',
-    padding: '10px 20px',
-    boxShadow: '0 2px 4px #000',
-    borderRadius: '2px',
-    color: '#FFF',
-    width: '150px',
-  };
-
-  const hoverStyle = {
-    backgroundColor: '#F3BB62',
-    boxShadow: '0 3px 5px #000',
-  };
-
-  const [isHovered, setIsHovered] = useState(false);
   const [form, setForm] = useState({
     nama: '',
     email: '',
@@ -105,10 +89,7 @@ const Contact = () => {
               </Col>
             </Form.Group>
             <Col sm="12" as={Row} className="mb-2">
-              <button type="submit" className="px-5 my-2 mx-3"
-                style={isHovered ? { ...buttonStyle, ...hoverStyle } : buttonStyle}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}>
+              <button type="submit" className="custom-button px-5 my-2 mx-3 fw-semibold">
                 Kirim
               </button>
             </Col>

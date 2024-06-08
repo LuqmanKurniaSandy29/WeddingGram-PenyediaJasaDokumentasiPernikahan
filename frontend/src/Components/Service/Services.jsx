@@ -1,56 +1,16 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Card, Modal } from "react-bootstrap";
-import "../Service/Services.css"
+import "../Service/Services.css";
 import picture1 from "../../Asset/picture 1.jpg";
 import picture2 from "../../Asset/picture 2.jpg";
 import picture4 from "../../Asset/picture 4.jpg";
 import picture6 from "../../Asset/picture 6.jpg";
 
 const Service = () => {
-    const detailButtonStyle = {
-        backgroundColor: '#D5A351',
-        border: 'none',
-        margin: '5px',
-        padding: '10px 20px',
-        boxShadow: '0 2px 4px #000',
-        borderRadius: '2px',
-        color: '#FFF',
-        width: '95%',
-    };
-    
-    const detailButtonHoverStyle = {
-        backgroundColor: '#F3BB62',
-        boxShadow: '0 3px 5px #000',
-    };
-
-    const orderButtonStyle = {
-        backgroundColor: '#4CAF50',
-        border: 'none',
-        margin: '5px',
-        padding: '10px 20px',
-        boxShadow: '0 2px 4px #000',
-        borderRadius: '2px',
-        color: '#FFF',
-        width: '20%',
-    };
-    
-    const orderButtonHoverStyle = {
-        backgroundColor: '#61DF65',
-        boxShadow: '0 3px 5px #000',
-    };
-    
-    const [detailHovered, setDetailHovered] = useState({});
-    const [orderHovered, setOrderHovered] = useState({});
     const [modalShow, setModalShow] = useState({});
 
     const handleClose = (index) => setModalShow(prevState => ({ ...prevState, [index]: false }));
     const handleShow = (index) => setModalShow(prevState => ({ ...prevState, [index]: true }));
-
-    const handleDetailMouseEnter = (index) => setDetailHovered(prevState => ({ ...prevState, [index]: true }));
-    const handleDetailMouseLeave = (index) => setDetailHovered(prevState => ({ ...prevState, [index]: false }));
-    
-    const handleOrderMouseEnter = () => setOrderHovered(true);
-    const handleOrderMouseLeave = () => setOrderHovered(false);
 
     const packages = [
         {
@@ -132,11 +92,8 @@ const Service = () => {
                                             {pkg.price}
                                         </Card.Text>
                                         <button
-                                            className="py-2 px-3 mr-4 fw-semibold"
+                                            className="detail-button py-2 px-3 mr-4 fw-semibold"
                                             onClick={() => handleShow(index)}
-                                            style={detailHovered[index] ? { ...detailButtonStyle, ...detailButtonHoverStyle } : detailButtonStyle}
-                                            onMouseEnter={() => handleDetailMouseEnter(index)}
-                                            onMouseLeave={() => handleDetailMouseLeave(index)}
                                         >
                                             Detail Paket
                                         </button>
@@ -166,10 +123,7 @@ const Service = () => {
                         <p className="text-light">Jangan lewatkan kesempatan emas ini! Klik tombol di bawah untuk segera memesan. Dapatkan penawaran terbaik dan layanan prima hanya dengan satu klik. Pesan sekarang dan nikmati pengalaman luar biasa bersama kami! Klik tombol di bawah dan nikmati semua keuntungan ini!</p>
                         <a href="/order">
                             <button
-                                className="py-2 px-3 fw-semibold"
-                                style={orderHovered ? { ...orderButtonStyle, ...orderButtonHoverStyle } : orderButtonStyle}
-                                onMouseEnter={handleOrderMouseEnter}
-                                onMouseLeave={handleOrderMouseLeave}
+                                className="order-button py-2 px-3 fw-semibold"
                             >
                                 Order
                             </button>

@@ -13,7 +13,7 @@ const Footer = () => {
   }
 
   const handleInstagramClick = () => {
-    window.location.href = 'https://www.instagram.com/luqman_kurniasandy/';
+    window.location.href = 'https://www.instagram.com/';
   }
 
   const handleTwitterClick = () => {
@@ -30,7 +30,7 @@ const Footer = () => {
           <div style={{ width: "100%" }}>
             <Row className="my-5">
               <Col lg={4} md={6} sm={6}>
-                <h5 className="text-left fw-bold">Abuot Us</h5>
+                <h5 className="text-left fw-bold">About Us</h5>
                 <p className="text-justify" style={{ maxWidth: "95%" }}>
                   WeddingGram, lahir Mei 2024, terinspirasi dari keinginan para pasangan untuk mengabadikan pernikahan dengan cara unik dan personal. Menjadi penyedia dokumentasi pernikahan terdepan di Indonesia, WeddingGram menawarkan jasa foto, video, dan berbagai layanan pendukung lainnya dengan kualitas terbaik dan harga terjangkau. Lebih dari sekedar foto dan video, WeddingGram ingin menceritakan kisah cinta Anda melalui dokumentasi pernikahan yang istimewa dan tak terlupakan. Percayakan momen spesial Anda kepada WeddingGram, dan ciptakan kenangan indah yang abadi.
                 </p>

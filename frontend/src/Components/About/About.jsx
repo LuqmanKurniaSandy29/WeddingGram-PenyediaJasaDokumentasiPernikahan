@@ -5,23 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const About = () => {
 
-    const buttonStyle = {
-        backgroundColor: '#D5A351',
-        border: 'none',
-        padding: '10px 20px',
-        boxShadow: '0 2px 4px #000',
-        borderRadius: '2px',
-        color: '#FFF',
-        width: '150px',
-      };
-    
-      const hoverStyle = {
-        backgroundColor: '#F3BB62',
-        boxShadow: '0 3px 5px #000',
-      };
-
-      const [isHovered, setIsHovered] = React.useState(false);
-
     return (
         <section id="about" className="py-5">
             <Container className="mt-3">
@@ -32,10 +15,7 @@ const About = () => {
                             WeddingGram adalah penyedia dokumentasi terkhusus untuk memastikan momen-momen istimewa dalam pernikahan Anda tertangkap dengan sempurna. Dari fotografi hingga videografi, kami hadir untuk membuat kenangan Anda abadi.
                         </p>
                         <a href="#contact">
-                            <button className="py-2 px-3 fw-semibold"
-                            style={isHovered ? { ...buttonStyle, ...hoverStyle } : buttonStyle}
-                            onMouseEnter={() => setIsHovered(true)}
-                            onMouseLeave={() => setIsHovered(false)}>
+                            <button className="custom-button py-2 px-3 fw-semibold">
                                 Contact Us
                             </button>
                         </a>
