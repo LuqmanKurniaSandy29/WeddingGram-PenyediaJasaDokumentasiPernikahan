@@ -1,45 +1,46 @@
+// -------- Importing Library ------------
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-// Import Session
-const session = require('express-session');
-// Import Cloudinary
 var cloudinary = require('./library/cloudinaryConfig');
-var indexRouter = require('./routes/index');
+
+// ------- Importing Routes ---------
+var indexRoutes = require('./routes/index');
 // Pemanggilan Routes Jasa.js
-var productRouter = require('./routes/product');
+var productRoutes = require('./routes/product');
 // Pemanggilan Routes customer.js
-var customerRouter = require('./routes/customer');
+var customerRoutes = require('./routes/customer');
 // Pemanggilan Routes admin.js
-var adminRouter = require('./routes/admin');
+var adminRoutes = require('./routes/admin');
 // Pemanggilan Routes Login.js
-var loginRouter = require('./routes/login');
+var authRoutes = require('./routes/auth');
 // Pemanggilan Routes order.js
-var orderRouter = require('./routes/order');
+var orderRoutes = require('./routes/order');
 // Pemanggilan Routes payment.js
-var paymentRouter = require('./routes/payment');
+var paymentRoutes = require('./routes/payment');
 
 var app = express();
-app.use(session({
-    secret: 'your-secret-key',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false }
-}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-// Tambah productRouter
-app.use('/product', productRouter);
-app.use('/customer', customerRouter);
-app.use('/admin', adminRouter);
-app.use('/auth', loginRouter);
-app.use('/order', orderRouter);
-app.use('/payment', paymentRouter);
 
+// ---------- Use Routes --------------
+app.use('/', indexRoutes);
+app.use('/product', productRoutes);
+app.use('/customer', customerRoutes);
+app.use('/admin', adminRoutes);
+app.use('/auth', authRoutes);
+app.use('/order', orderRoutes);
+app.use('/payment', paymentRoutes);
+
+// Port Configuration
+var PORT = 3001; // Change this to the desired port number
+
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
 module.exports = app;

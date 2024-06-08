@@ -2,10 +2,9 @@ const express = require('express');
 const multer = require('multer');
 const cloudinary = require('../library/cloudinaryConfig');
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
-const connection = require('../library/databaseConfig');
-
+const paymentController = require('../controllers/paymentController');
+const authController = require('../controllers/authController');
 const router = express.Router();
-
 // Konfigurasi penyimpanan Multer menggunakan Cloudinary
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
@@ -25,95 +24,7 @@ const storage = new CloudinaryStorage({
 
 const upload = multer({ storage: storage });
 
-// Fungsi untuk memulai transaksi
-function beginTransaction() {
-    return new Promise((resolve, reject) => {
-        connection.beginTransaction(err => {
-            if (err) {
-                console.error('Error starting transaction: ' + err);
-                return reject('Error starting transaction');
-            }
-            console.log('Transaction started');
-            resolve();
-        });
-    });
-}
+router.post('/', authController.verifyToken, upload.single('bukti_transfer'), paymentController.payment);
 
-// Fungsi untuk mengupdate pembayaran
-function updatePembayaran(kode_pembayaran, kode_customer, metode_pembayaran, status_pembayaran, bukti_transfer) {
-    return new Promise((resolve, reject) => {
-        const updateQuery = `
-            UPDATE tbl_pembayaran 
-            SET metode_pembayaran = ?, status_pembayaran = ?, bukti_transfer = ? 
-            WHERE kode_pembayaran = ? AND kode_customer = ?
-        `;
-        connection.query(updateQuery, [metode_pembayaran, status_pembayaran, bukti_transfer, kode_pembayaran, kode_customer], (err, result) => {
-            if (err) {
-                console.error('Error executing update pembayaran query: ' + err);
-                return reject('Error executing update pembayaran query');
-            }
-            console.log('Updated tbl_pembayaran:', result);
-            resolve();
-        });
-    });
-}
-
-// Fungsi untuk melakukan commit transaksi
-function commitTransaction() {
-    return new Promise((resolve, reject) => {
-        connection.commit(err => {
-            if (err) {
-                console.error('Error committing transaction: ' + err);
-                return reject('Error committing transaction');
-            }
-            console.log('Transaction committed');
-            resolve();
-        });
-    });
-}
-
-// Fungsi untuk melakukan rollback transaksi
-function rollbackTransaction() {
-    return new Promise((resolve) => {
-        connection.rollback(() => {
-            console.log('Transaction rolled back');
-            resolve();
-        });
-    });
-}
-
-router.post('/', upload.single('bukti_transfer'), async(req, res) => {
-    const { metode_pembayaran, kode_pembayaran } = req.body;
-    const bukti_transfer = req.file ? req.file.path : null;
-
-    // Cek apakah kode_customer tersedia dalam sesi
-    const kode_customer = req.session.user ? req.session.user.kode_customer : null;
-
-    // Pastikan kode_customer tersedia dalam sesi
-    if (!kode_customer) {
-        console.error('Kode customer tidak ditemukan di sesi');
-        return res.status(401).send('Unauthorized');
-    }
-
-    // Tentukan status_pembayaran
-    const status_pembayaran = 'Pengecekan oleh admin';
-
-    try {
-        // Mulai transaksi
-        await beginTransaction();
-
-        // Update informasi pembayaran ke tbl_pembayaran
-        await updatePembayaran(kode_pembayaran, kode_customer, metode_pembayaran, status_pembayaran, bukti_transfer);
-
-        // Commit transaksi
-        await commitTransaction();
-
-        res.status(200).send('Payment updated successfully');
-    } catch (err) {
-        console.error('Error during payment update:', err);
-        await rollbackTransaction();
-        res.status(500).send('Error updating payment');
-    }
-});
 
 module.exports = router;

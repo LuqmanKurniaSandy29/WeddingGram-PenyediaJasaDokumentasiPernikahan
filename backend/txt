@@ -1,0 +1,27 @@
+// Contoh Login Customer
+{
+    "username": "pati",
+    "password": "pati123"
+}
+// Contoh Admin
+{
+    "username": "konelo",
+    "password": "konelo123"
+}
+
+// Contoh Order
+{
+    "kode_product": "P-0001",
+    "tanggal_acara": "2024-05-30",
+    "total_biaya": 1000000
+}
+// Contoh Payment
+{
+    "kode_pembayaran": "PBfiljn4ypr",
+    "metode_pembayaran": "COD"
+}
+
+// Contoh Confirm Payment
+{
+    "kode_pembayaran": "PBfiljn4ypr"
+}
