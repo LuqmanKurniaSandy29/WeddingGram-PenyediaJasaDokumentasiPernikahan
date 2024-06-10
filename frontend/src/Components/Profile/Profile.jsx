@@ -1,4 +1,5 @@
 import React from "react";
+import ProfilePict from "../../Asset/picture 1.jpg";
 import { Button, Col, Container, Row } from "react-bootstrap";
 
 const Profile = () => {
@@ -13,8 +14,11 @@ const Profile = () => {
     <div style={{ backgroundColor: "#D5A351" }} className="p-lg-5 p-5">
       <Container fluid className=" p-1 p-lg-2 pt-3 bg-light mb-3">
         <h3 className="mb-4 text-center">Profile</h3>
-        <Row className="text-left m-auto justify-content-around" style={{ width: "70%" }}>
-          <Col sm={5}>
+        <Row className="text-left m-auto justify-content-around" style={{ width: "80%" }}>
+          <Col lg={3} md={6} sm={12}>
+            <img className="mb-4" style={{ height: "200px", width: "180px" }} src={ProfilePict} alt="foto profile" />
+          </Col>
+          <Col lg={4} md={3} sm={6}>
             <div className="mb-4">
               <h6 className="fw-bold">Nama</h6>
               <p className="font-weight-lighter">ahmajihaduddin salim</p>
@@ -28,7 +32,7 @@ const Profile = () => {
               <p className="font-weight-lighter">JL.Karangrejo Sawah VII 23a</p>
             </div>
           </Col>
-          <Col sm={5}>
+          <Col lg={4} md={3} sm={6}>
             <div className="mb-4">
               <h6 className="fw-bold">No.Telp</h6>
               <p className="font-weight-lighter">+62 8150 7771 30</p>
