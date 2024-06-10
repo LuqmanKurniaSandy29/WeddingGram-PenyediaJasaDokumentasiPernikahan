@@ -1,42 +1,30 @@
 import React from "react";
-import { Button, Col, Row } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 
 const CheckOrder = () => {
+  const orderValues = ["Wedding Favorite", "Jl. Indah Bersamamu No.29", "30-12-2024", "Disetujui"];
+
   return (
     <div>
-      <div className="m-auto p-4 mb-3" style={{ width: "90%", backgroundColor: "#fff" }}>
-        <h3 className="mb-4 text-center">Cek Status Pemesanan</h3>
-        <Row style={{ backgroundColor: "#B9B6B6" }} className="text-left mb-xs-5 p-2" lg={5} md={5} sm={2} xs={2}>
-          <Col>
-            <div>
-              <h5 className="font-weight- normal">Paket</h5>
-              <p className="font-weight-lighter">Wedding FAVORITE</p>
-            </div>
-          </Col>
-          <Col>
-            <div>
-              <h5 className="font-weight- normal">Alamat</h5>
-              <p className="font-weight-lighter">jl.gili trawangan VII</p>
-            </div>
-          </Col>
-          <Col>
-            <div>
-              <h5 className="font-weight- normal">Deskripsi Tempat</h5>
-              <p className="font-weight-lighter">Gedung A lantai 3</p>
-            </div>
-          </Col>
-          <Col>
-            <div>
-              <h5 className="font-weight- normal">Tanggal</h5>
-              <p className="font-weight-lighter">01-20-2024</p>
-            </div>
-          </Col>
-          <Col>
-            <div>
-              <Button className="mt-2 p-lg-2 p-1 mr-lg-2 disabled">Status</Button>
-            </div>
-          </Col>
-        </Row>
+      <div className="m-5 p-5 bg-light rounded">
+        <h3 className="my-3 text-center">Cek Status Pemesanan</h3>
+        <Table striped bordered hover>
+          <thead style={{ backgroundColor: "#B9B6B6" }}>
+            <tr className="text-center">
+              <th>Paket</th>
+              <th>Alamat</th>
+              <th>Tanggal Acara</th>
+              <th>Status Pesanan</th>
+            </tr>
+          </thead>
+          <tbody className="text-center">
+            <tr>
+              {orderValues.map((value, index) => (
+                <td key={index}>{value}</td>
+              ))}
+            </tr>
+          </tbody>
+        </Table>
       </div>
     </div>
   );

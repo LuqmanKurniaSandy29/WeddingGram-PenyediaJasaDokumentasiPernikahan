@@ -35,7 +35,7 @@ const Order = () => {
     return (
         <>
             <section className="d-flex justify-content-center align-items-center bg-color">
-                <Container className="custom-container p-5 bg-light rounded m-5">
+                <Container className="custom-container p-5 bg-light rounded m-5 shadow">
                     <Form noValidate onSubmit={handleSubmit}>
                         <Row className="px-5">
                             <h2 className="text-center fw-bold">Order</h2>
@@ -50,7 +50,7 @@ const Order = () => {
                                 </Form.Group>
                             </Col>
                             <Col md={4} className="p-2">
-                                <Form.Group className="mb3" controlId="ControlInputTelp">
+                                <Form.Group className="mb-3" controlId="ControlInputTelp">
                                     <Form.Label className="fw-bold">No.Telepon</Form.Label>
                                     <Form.Control type="text" placeholder="08***********" readOnly style={{ width: "100%" }} />
                                 </Form.Group>
@@ -86,7 +86,7 @@ const Order = () => {
                                     </div>
                                 </Form.Group>
                                 <h6 className="fw-bold">Total</h6>
-                                <p className="fw-bold my-4">Rp. -</p>
+                                <p className="fw-bold my-4">Rp.5.000.000</p>
                             </Col>
                         </Row>
                         <Row className="px-5">

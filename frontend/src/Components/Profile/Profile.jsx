@@ -1,35 +1,30 @@
 import React from "react";
 import ProfilePict from "../../Asset/picture 1.jpg";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import "../Profile/Profile.css";
+import { Col, Container, Row } from "react-bootstrap";
 
 const Profile = () => {
-  const customButtonStyleEdit = {
-    backgroundColor: "#D5A351", // Menggunakan warna yang Anda inginkan
-    borderColor: "white", // Sesuaikan jika diperlukan
-    color: "black",
-    width: "90px",
-  };
 
   return (
-    <div style={{ backgroundColor: "#D5A351" }} className="p-lg-5 p-5">
-      <Container fluid className=" p-1 p-lg-2 pt-3 bg-light mb-3">
-        <h3 className="mb-4 text-center">Profile</h3>
+    <div className="p-lg-5 p-5 bg-color">
+      <Container fluid className="p-5 bg-light rounded shadow">
         <Row className="text-left m-auto justify-content-around" style={{ width: "80%" }}>
-          <Col lg={3} md={6} sm={12}>
-            <img className="mb-4" style={{ height: "200px", width: "180px" }} src={ProfilePict} alt="foto profile" />
+        <h3 className="my-3">Profile</h3>
+          <Col lg={4} md={6} sm={12}>
+            <img className="mb-4 rounded" style={{ height: "200px", width: "180px" }} src={ProfilePict} alt="foto profile" />
           </Col>
           <Col lg={4} md={3} sm={6}>
             <div className="mb-4">
               <h6 className="fw-bold">Nama</h6>
-              <p className="font-weight-lighter">ahmajihaduddin salim</p>
+              <p className="font-weight-lighter">Dimas Adi Nugraha</p>
             </div>
             <div className="mb-4">
-              <h6 className="fw-bold">Jenis Kelamin</h6>
-              <p className="font-weight-lighter">Laki-Laki</p>
+              <h6 className="fw-bold">Username</h6>
+              <p className="font-weight-lighter">dimasan</p>
             </div>
             <div className="mb-4">
               <h6 className="fw-bold">Alamat</h6>
-              <p className="font-weight-lighter">JL.Karangrejo Sawah VII 23a</p>
+              <p className="font-weight-lighter">Jl. Indah Bersamamu No.29</p>
             </div>
           </Col>
           <Col lg={4} md={3} sm={6}>
@@ -41,10 +36,12 @@ const Profile = () => {
               <h6 className="fw-bold">Email</h6>
               <p className="font-weight-lighter">ahmad@gmail.com</p>
             </div>
-            <div className="mb-4 text-center">
-              <Button style={customButtonStyleEdit} href="/editprofile">
-                Edit
-              </Button>
+            <div>
+              <a href="/editprofile">
+                <button className="custom-button my-3">
+                  Ubah Profil
+                </button>
+              </a>
             </div>
           </Col>
         </Row>

@@ -1,12 +1,12 @@
 import React from "react";
-import "../Login/Login.css";
+import "../LoginAdmin/LoginAdmin.css";
 
-const Login = () => {
+const LoginAdmin = () => {
     return (
         <div className="login template d-flex justify-content-center align-item-center vh-100 bg-color">
             <div className="p-5 rounded m-auto bg-light shadow" style={{ height: 'max-content' }}>
                 <form>
-                    <h3 className="text-center my-3">Login</h3>
+                    <h3 className="text-center my-3">Login Admin</h3>
                     <div className="my-3">
                         <label htmlFor="username">Username</label>
                         <input type="text" placeholder="Masukkan Username" className="form-control" />
@@ -16,19 +16,16 @@ const Login = () => {
                         <input type="password" placeholder="Masukkan Password" className="form-control" />
                     </div>
                     <div className="d-grid text-center my-3"> 
-                        <a href="/Login">
+                        <a href="/LoginAdmin">
                             <button className="custom-button py-2 px-3 fw-semibold">
                                 Login
                             </button>
                         </a>
                     </div>
-                    <p className="text-center my-3">
-                        Belum memiliki akun? <a href="/register">Registrasi</a>
-                    </p>
                 </form>
             </div>
         </div>
     );
 };
 
-export default Login;
+export default LoginAdmin;

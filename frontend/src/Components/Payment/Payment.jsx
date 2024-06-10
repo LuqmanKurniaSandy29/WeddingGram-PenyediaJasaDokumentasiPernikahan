@@ -31,18 +31,18 @@ const Payment = () => {
   return (
     <>
       <section className="d-flex justify-content-center align-items-center bg-color">
-        <CustomContainerPayment className="p-5 bg-light rounded m-auto" style={{ height: "max-content" }}>
+        <CustomContainerPayment className="p-5 bg-light rounded m-auto shadow" style={{ height: "max-content" }}>
           <Row className="px-5">
             <h2 className="text-center fw-bold mb-3">Payment</h2>
             <Col lg={3} md={6} sm={6} xs={12} className="p-2">
               <Form>
                 <Form.Group className="mb-4" controlId="ControlInputName">
                   <Form.Label className="mb-3 fw-bold">Nama</Form.Label>
-                  <p className="fw-normal">Dani Bandara Saputra</p>
+                  <p className="fw-normal">Dimas Adi Nugraha</p>
                 </Form.Group>
                 <Form.Group className="mb-4" controlId="ControlInputAddress">
                   <Form.Label className="mb-3 fw-bold">Alamat</Form.Label>
-                  <p className="fw-normal">JL.pawitra penanggungan VII</p>
+                  <p className="fw-normal">Jl. Indah Bersamamu No.29</p>
                 </Form.Group>
               </Form>
             </Col>
@@ -50,18 +50,18 @@ const Payment = () => {
               <Form>
                 <Form.Group className="mb-4" controlId="ControlInputTelp">
                   <Form.Label className="mb-3 fw-bold">No.Telepon</Form.Label>
-                  <p className="fw-normal">08109347263</p>
+                  <p className="fw-normal">085232045537</p>
                 </Form.Group>
                 <Form.Group>
                   <Form.Label className="mb-3 fw-bold">Paket</Form.Label>
-                  <p className="fw-normal">Paket Exvlusive</p>
+                  <p className="fw-normal">Wedding Favorite</p>
                 </Form.Group>
               </Form>
             </Col>
             <Col lg={3} md={6} sm={6} xs={12} className="py-2 px-2">
               <Form.Group className="mb-4" controlId="ControlInputDate">
                 <Form.Label className="mb-3 fw-bold">Tanggal</Form.Label>
-                <p className="fw-normal">12-12-24</p>
+                <p className="fw-normal">30-12-2024</p>
               </Form.Group>
               <h6 className="fw-bold mb-4">Total</h6>
               <p className="fw-normal">Rp.5.000.000</p>

@@ -17,7 +17,7 @@ function Register() {
 
   return (
     <div id="form" className="template d-flex justify-content-center align-item-center vh-100 bg-color">
-      <Container className="p-5 rounded m-auto bg-light" style={{ height:'max-content', width:"60%" }}>
+      <Container className="p-5 rounded m-auto bg-light shadow" style={{ height:'max-content', width:"60%" }}>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Row className="mb-3 m-auto">
             <h4 className="text-center mb-4">Registrasi</h4>

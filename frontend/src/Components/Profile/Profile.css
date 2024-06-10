@@ -1,0 +1,15 @@
+.bg-color {
+    background-color: #D5A351;
+}
+
+.custom-button {
+    background-color: #D5A351;
+    border: none;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px #000;
+
+    &:hover {
+        background-color: #F3BB62;
+        box-shadow: 0 3px 5px #000;
+    }
+}

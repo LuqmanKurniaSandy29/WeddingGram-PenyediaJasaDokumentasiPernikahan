@@ -37,7 +37,7 @@ function FAQ() {
                 <Row className="my-5 mx-2">
                     <Col lg={5} md={12} sm={12} xs={12}>
                         <h2 className="FAQ-heading fw-bold text-light my-3">Frequently Asked Questions</h2>
-                        <p className="FAQ-description text-light text-justify my-4">Temukan beragam jawaban untuk pertanyaan umum yang mungkin Anda miliki mengenai layanan kami, dan dapatkan pemahaman mendalam tentang apa yang membuat WeddingGram menjadi pilihan utama dalam dokumentasi pernikahan Anda</p>
+                        <p className="FAQ-description text-light text-justify my-4">Temukan beragam jawaban untuk pertanyaan umum yang mungkin Anda miliki mengenai layanan kami, dan dapatkan pemahaman mendalam tentang apa yang membuat WeddingGram menjadi pilihan utama dalam dokumentasi pernikahan Anda.</p>
                     </Col>
                     <Col lg={7} md={12} sm={12} xs={12} className="px-2">
                         <Accordion>

@@ -20,16 +20,16 @@ const Navigasi = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link className="mx-3" href="/landingpage/#home">
+            <Nav.Link className="mx-3" href="/#home">
               Home
             </Nav.Link>
-            <Nav.Link className="mx-3" href="/landingpage/#about">
+            <Nav.Link className="mx-3" href="/#about">
               About
             </Nav.Link>
-            <Nav.Link className="mx-3" href="/landingpage/#services">
+            <Nav.Link className="mx-3" href="/#services">
               Service
             </Nav.Link>
-            <Nav.Link className="mx-3" href="/landingpage/#contact">
+            <Nav.Link className="mx-3" href="/#contact">
               Contact
             </Nav.Link>
             <Nav.Link className="mx-3 d-block d-lg-none" href="/login" style={{ textDecoration: 'none' }}>
