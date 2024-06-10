@@ -3,6 +3,6 @@ var router = express.Router();
 const productController = require('../controllers/productController');
 const authController = require('../controllers/authController');
 
-router.get('/', authController.userLogin, productController.getAllProduct);
-router.post('/:kode_product', authController.userLogin, productController.getProductById);
+router.get('/', authController.verifyToken, productController.getAllProduct);
+router.post('/:kode_product', authController.verifyToken, productController.getProductById);
 module.exports = router;
