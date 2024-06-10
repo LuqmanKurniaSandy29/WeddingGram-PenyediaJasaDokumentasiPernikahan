@@ -11,6 +11,7 @@ import PaymentPage from "./Page/PaymentPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ProfilePage from "./Page/ProfilePage";
 import EditProfilePage from "./Page/EditProfilePage";
+import DashboardAdmin from "./Page/DashboardAdmin";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/editprofile" element={<EditProfilePage />} />
+        <Route path="/admin" element={<DashboardAdmin />} />
       </Routes>
     </Router>
   );
