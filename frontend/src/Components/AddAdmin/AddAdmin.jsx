@@ -1,15 +1,20 @@
-import React from "react";
+import React from 'react'
 import { Form, Container, Row, Col } from 'react-bootstrap';
-import '../Login/Login.css';
+import "../AddAdmin/AddAdmin.css"
 
-const Login = () => {
-    return (
-        <Container fluid className="login-template d-flex justify-content-center align-items-center vh-100 bg-color">
+const AddAdmin = () => {
+  return (
+    <div>
+      <Container fluid className="login-template d-flex justify-content-center align-items-center vh-100 bg-color">
             <Row className="justify-content-center">
                 <Col>
                     <div className="p-5 rounded bg-light shadow" style={{ height: 'max-content' }}>
                         <Form>
-                            <h3 className="text-center my-3">Login</h3>
+                            <h3 className="text-center my-3">Add Admin</h3>
+                            <Form.Group className="my-3">
+                                <Form.Label htmlFor="username" className="fw-bold">Nama</Form.Label>
+                                <Form.Control type="text" placeholder="Masukkan Nama" className="form-control-login" />
+                            </Form.Group>
                             <Form.Group className="my-3">
                                 <Form.Label htmlFor="username" className="fw-bold">Username</Form.Label>
                                 <Form.Control type="text" placeholder="Masukkan Username" className="form-control-login" />
@@ -19,21 +24,19 @@ const Login = () => {
                                 <Form.Control type="password" placeholder="Masukkan Password" className="form-control-login" />
                             </Form.Group>
                             <div className="d-grid text-center my-3"> 
-                                <a href="/Login">
+                                <a href="/LoginAdmin">
                                     <button className="custom-button py-2 px-3 fw-semibold">
-                                        Login
+                                        Add Admin
                                     </button>
                                 </a>
                             </div>
-                            <p className="text-center my-3">
-                                Belum memiliki akun? <a href="/register">Registrasi</a>
-                            </p>
                         </Form>
                     </div>
                 </Col>
             </Row>
         </Container>
-    );
-};
+    </div>
+  )
+}
 
-export default Login;
+export default AddAdmin

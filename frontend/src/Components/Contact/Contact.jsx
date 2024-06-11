@@ -67,7 +67,7 @@ const Contact = () => {
                 Nama
               </Form.Label>
               <Col sm="12">
-                <Form.Control type="text" name="nama" placeholder="Masukkan Nama" value={form.nama} onChange={handleChange} />
+                <Form.Control type="text" className="form-control-contact" name="nama" placeholder="Masukkan Nama" value={form.nama} onChange={handleChange} />
               </Col>
             </Form.Group>
 
@@ -76,7 +76,7 @@ const Contact = () => {
                 Email
               </Form.Label>
               <Col sm="12">
-                <Form.Control type="email" name="email" placeholder="Masukkan Email" value={form.email} onChange={handleChange} />
+                <Form.Control type="email" className="form-control-contact" name="email" placeholder="Masukkan Email" value={form.email} onChange={handleChange} />
               </Col>
             </Form.Group>
 
@@ -85,7 +85,7 @@ const Contact = () => {
                 Pesan
               </Form.Label>
               <Col sm="12">
-                <Form.Control as="textarea" name="pesan" rows={3} placeholder="Masukkan Pesan" value={form.pesan} onChange={handleChange} />
+                <Form.Control as="textarea" className="form-control-contact" name="pesan" rows={3} placeholder="Masukkan Pesan" value={form.pesan} onChange={handleChange} />
               </Col>
             </Form.Group>
             <Col sm="12" as={Row} className="mb-2">

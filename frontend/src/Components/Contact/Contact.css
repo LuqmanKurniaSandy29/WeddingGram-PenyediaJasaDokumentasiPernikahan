@@ -27,18 +27,11 @@
     width: 150px !important;
 }
 
-.custom-button {
-    background-color: #D5A351;
-    border: none;
-    padding: 10px 20px;
-    box-shadow: 0 2px 4px #000;
-    border-radius: 2px;
-    color: #FFF;
-    width: 150px;
-    transition: background-color 0.3s, box-shadow 0.3s;
+.form-control-contact {
+    transition: box-shadow 0.3s ease-in-out;
 
-    &:hover {
-        background-color: #F3BB62;
-        box-shadow: 0 3px 5px #000;
+    &:focus {
+        border: 1px solid #D5A351;
+        box-shadow: 0 2px 4px #EFCC81;
     }
 }

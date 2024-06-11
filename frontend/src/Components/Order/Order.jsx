@@ -27,7 +27,7 @@ const Order = () => {
         }
 
         if (valid) {
-            // Proceed to payment or further processing
+            // Proceed to payment processing
             window.location.href = "/payment";
         }
     };

@@ -84,7 +84,7 @@ const Service = () => {
                     <Row>
                         {packages.map((pkg, index) => (
                             <Col lg={3} md={6} sm={12} className='px-2 justify-content-arround text-center' key={index}>
-                                <Card style={{ width: '18rem' }} className='mx-auto my-3'>
+                                <Card style={{ width: '18rem' }} className='mx-auto my-3 shadow'>
                                     <Card.Img variant="top" src={pkg.image} />
                                     <Card.Body>
                                         <Card.Title>{pkg.title}</Card.Title>

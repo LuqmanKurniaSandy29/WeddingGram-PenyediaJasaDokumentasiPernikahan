@@ -38,10 +38,10 @@ const Footer = () => {
               <Col lg={3} md={6} sm={6} className="text-left ps-5">
                 <h5 className="fw-bold">Our Product</h5>
                 <ul className="list-unstyled">
-                  <a href="#services" className="anchor-product"><li>Paket Weeding Favorite</li></a>
-                  <a href="#services" className="anchor-product"><li>Paket Weeding Exclusive</li></a>
-                  <a href="#services" className="anchor-product"><li>Paket Weeding Glamor</li></a>
-                  <a href="#services" className="anchor-product"><li>Paket Weeding Gold</li></a>
+                  <a href="/#services" className="anchor-product"><li>Paket Weeding Favorite</li></a>
+                  <a href="/#services" className="anchor-product"><li>Paket Weeding Exclusive</li></a>
+                  <a href="/#services" className="anchor-product"><li>Paket Weeding Glamor</li></a>
+                  <a href="/#services" className="anchor-product"><li>Paket Weeding Gold</li></a>
                 </ul>
               </Col>
               <Col lg={3} md={6} sm={6}>

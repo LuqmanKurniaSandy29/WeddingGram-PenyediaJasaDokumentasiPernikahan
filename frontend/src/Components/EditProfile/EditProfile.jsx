@@ -12,7 +12,6 @@ const EditProfile = () => {
     let valid = true;
 
     if (valid) {
-      // Proceed to payment or further processing
       window.location.href = "/profile";
     }
   };
@@ -48,7 +47,7 @@ const EditProfile = () => {
             <Col lg={4} md={3} sm={6}>
               <Form.Group className="mb-3" controlId="ControlInputPhone">
                 <Form.Label className="fw-bold">No.Telp</Form.Label>
-                <Form.Control type="text" placeholder="081-04397" />
+                <Form.Control type="text" placeholder="085232045537" />
               </Form.Group>
               <Form.Group className="my-3" controlId="ControlInputEmail">
                 <Form.Label className="fw-bold">Email</Form.Label>

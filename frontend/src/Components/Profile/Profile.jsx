@@ -30,7 +30,7 @@ const Profile = () => {
           <Col lg={4} md={3} sm={6}>
             <div className="mb-4">
               <h6 className="fw-bold">No.Telp</h6>
-              <p className="font-weight-lighter">+62 8150 7771 30</p>
+              <p className="font-weight-lighter">085232045537</p>
             </div>
             <div className="mb-4">
               <h6 className="fw-bold">Email</h6>

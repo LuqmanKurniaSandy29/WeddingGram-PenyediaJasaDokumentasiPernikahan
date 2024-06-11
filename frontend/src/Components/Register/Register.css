@@ -13,3 +13,16 @@
         box-shadow: 0 3px 5px #000;
     }
 }
+
+.form-control-regist {
+    border: none;
+    border-bottom: 2px solid #CCC;
+    border-radius: 0;
+    outline: none;
+    box-shadow: none;
+
+    &:focus {
+        border-bottom: 2px solid #D5A351;
+        box-shadow: none;
+    }
+}

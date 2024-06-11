@@ -11,6 +11,7 @@ import ProfilePage from "./Page/ProfilePage";
 import EditProfilePage from "./Page/EditProfilePage";
 import DashboardAdmin from "./Page/DashboardAdmin";
 import LoginAdminPage from "./Page/LoginAdminPage";
+import AddAdminPage from "./Page/AddAdminPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/editprofile" element={<EditProfilePage />} />
         <Route path="/admin" element={<DashboardAdmin />} />
         <Route path="/loginadmin" element={<LoginAdminPage/>} />
+        <Route path="/addadmin" element={<AddAdminPage />} />
       </Routes>
     </Router>
   );
