@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const TableUser = () => {
   return (
     <div className="col">
-      <div className="tabel">
+      <div className="tabel-admin">
         <Table striped bordered hover>
           <thead>
             <tr>
