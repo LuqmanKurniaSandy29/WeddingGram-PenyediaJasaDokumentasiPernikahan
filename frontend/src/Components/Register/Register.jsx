@@ -152,7 +152,7 @@ function Register() {
         </Form>
       </Container>
     </div>
-  );
+  ); 
 }
 
 export default Register;
