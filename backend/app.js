@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cloudinary = require('./library/cloudinaryConfig');
-
+var cors = require('cors');
 // ------- Importing Routes ---------
 var indexRoutes = require('./routes/index');
 // Pemanggilan Routes Jasa.js
@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(cors());
 
 // ---------- Use Routes --------------
 app.use('/', indexRoutes);
