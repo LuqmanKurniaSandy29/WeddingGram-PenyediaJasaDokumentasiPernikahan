@@ -13,22 +13,25 @@ import DashboardAdmin from "./Page/DashboardAdmin";
 import LoginAdminPage from "./Page/LoginAdminPage";
 import AddAdminPage from "./Page/AddAdminPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { AuthProvider } from "./Context/AuthContext"; // Import AuthProvider
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/order" element={<OrderPage />} />
-        <Route path="/payment" element={<PaymentPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/editprofile" element={<EditProfilePage />} />
-        <Route path="/admin" element={<DashboardAdmin />} />
-        <Route path="/loginadmin" element={<LoginAdminPage/>} />
-        <Route path="/addadmin" element={<AddAdminPage />} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/order" element={<OrderPage />} />
+          <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/editprofile" element={<EditProfilePage />} />
+          <Route path="/admin" element={<DashboardAdmin />} />
+          <Route path="/loginadmin" element={<LoginAdminPage />} />
+          <Route path="/addadmin" element={<AddAdminPage />} />
+        </Routes>
+      </AuthProvider>
     </Router>
   );
 }

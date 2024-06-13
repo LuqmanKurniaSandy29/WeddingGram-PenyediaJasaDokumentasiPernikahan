@@ -37,6 +37,15 @@ function Register() {
         title: "Registrasi Berhasil",
         text: "Anda telah berhasil mendaftar!",
       });
+      setFormData({
+        username: "",
+        password: "",
+        nama_customer: "",
+        alamat: "",
+        no_hp: "",
+        email: "",
+      });
+      setValidated(false);
       console.log(response.data); // Tangani respon sesuai kebutuhan
     } catch (error) {
       Swal.fire({
@@ -152,7 +161,7 @@ function Register() {
         </Form>
       </Container>
     </div>
-  ); 
+  );
 }
-
+ 
 export default Register;

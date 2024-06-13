@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import ProfilePict from "../../Asset/picture 1.jpg";
 import "../Profile/Profile.css";
 import { Col, Container, Row } from "react-bootstrap";
+import AuthContext from "../../Context/AuthContext"; // Import AuthContext
 
 const Profile = () => {
+  const { logout } = useContext(AuthContext); // Use the AuthContext
+
+  const handleLogout = () => {
+    logout(); // Call the logout function from AuthContext
+    window.location.href = "/login"; // Redirect to login page after logout
+  };
 
   return (
     <div className="p-lg-5 p-5 bg-color">
       <Container fluid className="p-5 bg-light rounded shadow">
         <Row className="text-left m-auto justify-content-around" style={{ width: "80%" }}>
-        <h3 className="my-3">Profile</h3>
+          <h3 className="my-3">Profile</h3>
           <Col lg={4} md={6} sm={12}>
             <img className="mb-4 rounded" style={{ height: "200px", width: "180px" }} src={ProfilePict} alt="foto profile" />
           </Col>
@@ -42,6 +49,9 @@ const Profile = () => {
                   Ubah Profil
                 </button>
               </a>
+              <button className="custom-button my-3 ms-5" onClick={handleLogout}>
+                Logout
+              </button>
             </div>
           </Col>
         </Row>

@@ -1,16 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Container, Row, Col, Card, Modal } from "react-bootstrap";
+import Swal from 'sweetalert2'; // Import SweetAlert2
 import "../Service/Services.css";
 import picture1 from "../../Asset/picture 1.jpg";
 import picture2 from "../../Asset/picture 2.jpg";
 import picture4 from "../../Asset/picture 4.jpg";
 import picture6 from "../../Asset/picture 6.jpg";
+import AuthContext from "../../Context/AuthContext"; // Import AuthContext
 
 const Service = () => {
+    const { isAuthenticated } = useContext(AuthContext); // Use AuthContext to check if the user is authenticated
     const [modalShow, setModalShow] = useState({});
 
     const handleClose = (index) => setModalShow(prevState => ({ ...prevState, [index]: false }));
     const handleShow = (index) => setModalShow(prevState => ({ ...prevState, [index]: true }));
+
+    const handleOrderClick = () => {
+        if (isAuthenticated) {
+            window.location.href = "/order";
+        } else {
+            Swal.fire({
+                title: 'Login Terlebih Dahulu',
+                text: 'Anda harus login terlebih dahulu untuk melakukan order.',
+                icon: 'warning',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "/";
+                }
+            });
+        }
+    };
 
     const packages = [
         {
@@ -83,7 +103,7 @@ const Service = () => {
                     </p>
                     <Row>
                         {packages.map((pkg, index) => (
-                            <Col lg={3} md={6} sm={12} className='px-2 justify-content-arround text-center' key={index}>
+                            <Col lg={3} md={6} sm={12} className='px-2 justify-content-around text-center' key={index}>
                                 <Card style={{ width: '18rem' }} className='mx-auto my-3 shadow'>
                                     <Card.Img variant="top" src={pkg.image} />
                                     <Card.Body>
@@ -121,13 +141,12 @@ const Service = () => {
                     </Row>
                     <div className="text-center mt-4">
                         <p className="text-light">Jangan lewatkan kesempatan emas ini! Klik tombol di bawah untuk segera memesan. Dapatkan penawaran terbaik dan layanan prima hanya dengan satu klik. Pesan sekarang dan nikmati pengalaman luar biasa bersama kami! Klik tombol di bawah dan nikmati semua keuntungan ini!</p>
-                        <a href="/order">
-                            <button
-                                className="order-button py-2 px-3 fw-semibold"
-                            >
-                                Order
-                            </button>
-                        </a>
+                        <button
+                            className="order-button py-2 px-3 fw-semibold"
+                            onClick={handleOrderClick}
+                        >
+                            Order
+                        </button>
                     </div>
                 </Container>
             </section>
