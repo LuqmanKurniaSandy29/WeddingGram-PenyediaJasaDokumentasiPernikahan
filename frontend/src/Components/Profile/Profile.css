@@ -13,3 +13,30 @@
         box-shadow: 0 3px 5px #000;
     }
 }
+
+.custom-button {
+    background-color: #D5A351;
+    border: none;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px #000;
+
+    &:hover {
+        background-color: #F3BB62;
+        box-shadow: 0 3px 5px #000;
+    }
+}
+
+.logout-button {
+    background-color: #E53935; 
+    border: none;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px #000;
+    width: 150px;
+    border-radius: 3px;
+    color: #FFF;
+
+    &:hover {
+        background-color: #D32F2F; 
+        box-shadow: 0 3px 5px #000;
+    }
+}
