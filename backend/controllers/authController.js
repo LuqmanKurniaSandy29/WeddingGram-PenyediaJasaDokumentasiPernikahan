@@ -59,6 +59,7 @@ module.exports = {
                         alamat: customer.alamat,
                         email: customer.email,
                         no_hp: customer.no_hp,
+                        url_profileImg: customer.url_profileImg,
                         userType: 'customer'
                     }, SECRET_KEY, { expiresIn: '1h' });
 

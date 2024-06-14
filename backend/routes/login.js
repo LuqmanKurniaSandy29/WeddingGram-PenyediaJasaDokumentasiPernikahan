@@ -54,6 +54,7 @@ router.post('/login', async(req, res) => {
                     alamat: customer.alamat,
                     email: customer.email,
                     no_hp: customer.no_hp,
+                    url_profileImg: customer.url_profileImg,
                     userType: 'customer'
                 };
                 return res.status(200).json({
