@@ -62,10 +62,10 @@ const Order = () => {
                                         onChange={(e) => setPackageSelected(e.target.value)}
                                     >
                                         <option value="">Pilih paket Anda</option>
-                                        <option value="1">Paket Favorite</option>
-                                        <option value="2">Paket Exvlusive</option>
-                                        <option value="3">Paket Glamour</option>
-                                        <option value="4">Paket Gold</option>
+                                        <option value="P-0001">Paket Favorite</option>
+                                        <option value="P-0002">Paket Exvlusive</option>
+                                        <option value="P-0003">Paket Glamour</option>
+                                        <option value="P-0004">Paket Gold</option>
                                     </Form.Select>
                                     {showPackageError && (
                                         <div className="text-danger" style={{ fontSize: "small" }}>Pilih paket terlebih dahulu</div>
