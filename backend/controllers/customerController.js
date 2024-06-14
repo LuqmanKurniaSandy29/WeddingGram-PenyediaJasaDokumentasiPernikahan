@@ -19,9 +19,37 @@ module.exports = {
         });
     },
 
+    async generateCustomerCode() {
+        return new Promise((resolve, reject) => {
+            // Query to get the latest kode_customer
+            const query = `SELECT kode_customer FROM tbl_customer ORDER BY kode_customer DESC LIMIT 1`;
+            connection.query(query, (err, results) => {
+                if (err) {
+                    console.error('Error fetching latest kode_customer:', err);
+                    return reject('Error fetching latest kode_customer');
+                }
+
+                let newCode;
+                if (results.length > 0) {
+                    // Extract the numeric part from the latest kode_customer and increment it
+                    const latestCode = results[0].kode_customer;
+                    const numericPart = parseInt(latestCode.split('-')[1]);
+                    const newNumericPart = numericPart + 1;
+
+                    // Format the new kode_customer
+                    newCode = `C-${newNumericPart.toString().padStart(4, '0')}`;
+                } else {
+                    // If no kode_customer exists, start with C-0001
+                    newCode = 'C-0001';
+                }
+                resolve(newCode);
+            });
+        });
+    },
     async createCustomer(req, res) {
         try {
             const { nama_customer, username, password, alamat, email, no_hp } = req.body;
+            const url_profileImg = 'https://res.cloudinary.com/did9dikb2/image/upload/v1717838097/WeddingGram/url_profileImg/ouswgp3a0jwofrs1qjaw.jpg';
 
             if (!nama_customer || !username || !password || !alamat || !email || !no_hp) {
                 return res.json({ pesan: 'Mohon Pastikan Seluruh Form Telah Terisi!' });
@@ -29,13 +57,18 @@ module.exports = {
 
             const hashedPassword = await bcrypt.hash(password, 10);
 
+            // Generate kode_customer
+            const kode_customer = await module.exports.generateCustomerCode();
+
             const formData = {
+                kode_customer: kode_customer,
                 nama_customer: nama_customer,
                 username: username,
                 password: hashedPassword,
                 alamat: alamat,
                 email: email,
-                no_hp: no_hp
+                no_hp: no_hp,
+                url_profileImg: url_profileImg
             };
 
             connection.query('INSERT INTO tbl_customer SET ?', formData, (err, result) => {
@@ -51,6 +84,8 @@ module.exports = {
             return res.status(500).json({ error: 'Failed To Register Customer' });
         }
     },
+
+
 
     getOrderUser(req, res) {
         const kode_customer = req.user ? req.user.kode_customer : null;

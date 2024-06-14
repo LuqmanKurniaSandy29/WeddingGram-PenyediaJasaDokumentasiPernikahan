@@ -41,10 +41,13 @@ module.exports = {
         });
     },
 
-    insertOrder(kode_order, kode_customer, kode_product, kode_pembayaran, tanggal_acara, total_biaya, status_order) {
+    insertOrder(kode_order, kode_customer, kode_product, kode_pembayaran, tanggal_acara, total_biaya) {
         return new Promise((resolve, reject) => {
-            const orderQuery = `INSERT INTO tbl_order (kode_order, kode_customer, kode_product, kode_pembayaran, tanggal_acara, total_biaya, status_order) VALUES (?, ?, ?, ?, ?, ?, 'Menunggu Pembayaran')`;
-            connection.query(orderQuery, [kode_order, kode_customer, kode_product, kode_pembayaran, tanggal_acara, total_biaya, status_order], (err, result) => {
+            const tanggal_order = new Date();
+            const orderQuery = `
+                INSERT INTO tbl_order (kode_order, kode_customer, kode_product, kode_pembayaran, tanggal_acara, total_biaya, status_order, tanggal_order) 
+                VALUES (?, ?, ?, ?, ?, ?, 'Menunggu Pembayaran', ?)`;
+            connection.query(orderQuery, [kode_order, kode_customer, kode_product, kode_pembayaran, tanggal_acara, total_biaya, tanggal_order], (err, result) => {
                 if (err) {
                     console.error('Error executing order query: ' + err);
                     return reject('Error executing order query');

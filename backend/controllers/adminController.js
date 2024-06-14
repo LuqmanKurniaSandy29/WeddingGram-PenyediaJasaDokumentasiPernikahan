@@ -6,20 +6,61 @@ const connection = require('../library/databaseConfig');
 
 
 module.exports = {
-    updatePaymentStatus(kode_pembayaran, kode_admin) {
+    async updatePaymentStatus(kode_pembayaran, kode_admin) {
         return new Promise((resolve, reject) => {
-            const updateQuery = `
-                UPDATE tbl_pembayaran 
-                SET status_pembayaran = 'Terbayar', kode_admin = ? 
-                WHERE kode_pembayaran = ?
-            `;
-            connection.query(updateQuery, [kode_admin, kode_pembayaran], (err, result) => {
+            connection.beginTransaction(err => {
                 if (err) {
-                    console.error('Error executing update payment status query: ' + err);
-                    return reject('Error updating payment status');
+                    console.error('Error starting transaction: ' + err);
+                    return reject('Error starting transaction');
                 }
-                console.log('Updated payment status:', result);
-                resolve();
+                console.log('Transaction started');
+
+                // Update status pembayaran
+                const updatePaymentQuery = `
+                    UPDATE tbl_pembayaran 
+                    SET status_pembayaran = 'Terbayar', kode_admin = ? 
+                    WHERE kode_pembayaran = ?
+                `;
+                connection.query(updatePaymentQuery, [kode_admin, kode_pembayaran], (err, result) => {
+                    if (err) {
+                        console.error('Error executing update payment status query: ' + err);
+                        return connection.rollback(() => {
+                            console.error('Transaction rolled back due to payment status update error');
+                            return reject('Error updating payment status');
+                        });
+                    }
+                    console.log('Updated payment status:', result);
+
+                    // Update status order
+                    const updateOrderQuery = `
+                        UPDATE tbl_order 
+                        SET status_order = 'Di Proses' 
+                        WHERE kode_pembayaran = ?
+                    `;
+                    connection.query(updateOrderQuery, [kode_pembayaran], (err, result) => {
+                        if (err) {
+                            console.error('Error executing update order status query: ' + err);
+                            return connection.rollback(() => {
+                                console.error('Transaction rolled back due to order status update error');
+                                return reject('Error updating order status');
+                            });
+                        }
+                        console.log('Updated order status:', result);
+
+                        // Commit transaction
+                        connection.commit(err => {
+                            if (err) {
+                                console.error('Error committing transaction: ' + err);
+                                return connection.rollback(() => {
+                                    console.error('Transaction rolled back due to commit error');
+                                    return reject('Error committing transaction');
+                                });
+                            }
+                            console.log('Transaction committed');
+                            resolve();
+                        });
+                    });
+                });
             });
         });
     },
@@ -37,6 +78,25 @@ module.exports = {
             }
         });
     },
+    async generateKodeAdmin() {
+        return new Promise((resolve, reject) => {
+            const query = "SELECT MAX(kode_admin) as maxKode FROM tbl_admin";
+            connection.query(query, (err, result) => {
+                if (err) {
+                    console.error('Error fetching max kode_admin:', err);
+                    return reject('Error fetching max kode_admin');
+                }
+                const maxKode = result[0].maxKode;
+                let newKode = 'A-0001'; // default value if no data exists
+                if (maxKode) {
+                    const number = parseInt(maxKode.split('-')[1]) + 1;
+                    newKode = `A-${number.toString().padStart(4, '0')}`;
+                }
+                resolve(newKode);
+            });
+        });
+    },
+
     async registerAdmin(req, res) {
         try {
             let { nama_admin, username, password } = req.body;
@@ -46,8 +106,10 @@ module.exports = {
             }
 
             const hashedPassword = await bcrypt.hash(password, 10);
+            const kode_admin = await module.exports.generateKodeAdmin();
 
             const formData = {
+                kode_admin: kode_admin,
                 nama_admin: nama_admin,
                 username: username,
                 password: hashedPassword
@@ -66,6 +128,7 @@ module.exports = {
             return res.status(500).json({ error: 'Failed To Register Admin' });
         }
     },
+
     listAllPayments(req, res, next) {
         connection.query('SELECT * FROM tbl_pembayaran', function(err, rows) {
             if (err) {
