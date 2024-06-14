@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.368053ec.css",
+    "main.js": "/static/js/main.d59a95c5.js",
+    "static/js/453.d855a71b.chunk.js": "/static/js/453.d855a71b.chunk.js",
+    "static/media/bootstrap-icons.woff?": "/static/media/bootstrap-icons.39795c0b4513de014cf8.woff",
+    "static/media/user.webp": "/static/media/user.abbdbbf019e2df25b0d8.webp",
+    "static/media/bootstrap-icons.woff2?": "/static/media/bootstrap-icons.b7bcc075b395c14ce8c2.woff2",
+    "static/media/picture 4.jpg": "/static/media/picture 4.85efeb0506d3fa663db5.jpg",
+    "static/media/picture 6.jpg": "/static/media/picture 6.9d4711f42c38700fcf72.jpg",
+    "static/media/picture 2.jpg": "/static/media/picture 2.5fb7116099f0d5b30aa2.jpg",
+    "static/media/picture 1.jpg": "/static/media/picture 1.683bed1195bfeb5d1767.jpg",
+    "static/media/picture 10.jpg": "/static/media/picture 10.30dc823f51aaad774343.jpg",
+    "static/media/Logo.png": "/static/media/Logo.d6ec757d703252888d54.png",
+    "index.html": "/index.html",
+    "static/media/instagram.svg": "/static/media/instagram.cca5396f03e7b71ac35b21610b8c94ac.svg",
+    "static/media/gmail.svg": "/static/media/gmail.684d3489a3f37c2c8157e8d1a2cfd4cc.svg",
+    "static/media/facebook.svg": "/static/media/facebook.cebbf1700cfcaa7c8421b3e41da0b443.svg",
+    "static/media/twitter.svg": "/static/media/twitter.edd163798e26dce14a44d0192f5b81ff.svg",
+    "main.368053ec.css.map": "/static/css/main.368053ec.css.map",
+    "main.d59a95c5.js.map": "/static/js/main.d59a95c5.js.map",
+    "453.d855a71b.chunk.js.map": "/static/js/453.d855a71b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.368053ec.css",
+    "static/js/main.d59a95c5.js"
+  ]
+}
