@@ -31,7 +31,7 @@ function Register() {
     }
 
     try {
-      const response = await axios.post("http://localhost:3001/customer/register", formData);
+      const response = await axios.post("http://localhost:3307/customer/register", formData);
       Swal.fire({
         icon: "success",
         title: "Registrasi Berhasil",

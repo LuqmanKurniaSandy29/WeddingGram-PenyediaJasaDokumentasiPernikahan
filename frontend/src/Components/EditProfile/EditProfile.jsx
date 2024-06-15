@@ -13,6 +13,7 @@ const EditProfile = () => {
     no_hp: "",
     email: "",
     imgProfile: null,
+    url_profileImg: "",
   });
 
   // State untuk mengelola status loading dan error
@@ -33,8 +34,8 @@ const EditProfile = () => {
         });
 
         // Mengatur data yang diterima ke dalam state formData
-        const { name, username, alamat, no_hp, email, imgProfile } = response.data.user;
-        setFormData({ name, username, alamat, no_hp, email, imgProfile });
+        const { name, username, alamat, no_hp, email, url_profileImg } = response.data.user;
+        setFormData({ name, username, alamat, no_hp, email, imgProfile: null, url_profileImg });
         setLoading(false); // Menghentikan status loading setelah data diterima
       } catch (error) {
         console.error('Error fetching profile data:', error);
@@ -55,7 +56,11 @@ const EditProfile = () => {
   // Fungsi untuk menangani perubahan input file
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    setFormData((prevData) => ({ ...prevData, imgProfile: file }));
+    setFormData((prevData) => ({
+      ...prevData,
+      imgProfile: file,
+      url_profileImg: URL.createObjectURL(file),
+    }));
   };
 
   // Fungsi untuk menangani submit formulir
@@ -70,12 +75,14 @@ const EditProfile = () => {
 
       // Mengatur data form ke dalam FormData untuk mengirim file
       const formDataToSend = new FormData();
-      Object.keys(formData).forEach((key) => {
-        formDataToSend.append(key, formData[key]);
-      });
-
-      // Log data yang akan dikirim untuk debugging
-      console.log('FormData to send:', formDataToSend);
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('username', formData.username);
+      formDataToSend.append('alamat', formData.alamat);
+      formDataToSend.append('no_hp', formData.no_hp);
+      formDataToSend.append('email', formData.email);
+      if (formData.imgProfile) {
+        formDataToSend.append('imgProfile', formData.imgProfile);
+      }
 
       // Mengirim permintaan PUT ke endpoint untuk memperbarui profil
       const response = await axios.put('http://localhost:3001/customer/editprofile', formDataToSend, {
@@ -88,6 +95,12 @@ const EditProfile = () => {
       // Log respons dari server untuk debugging
       console.log('Server response:', response);
 
+      // Memperbarui formData dengan url_profileImg yang baru
+      setFormData(prevData => ({
+        ...prevData,
+        url_profileImg: formDataToSend.get('imgProfile') ? URL.createObjectURL(formDataToSend.get('imgProfile')) : prevData.url_profileImg,
+      }));
+
       // Menampilkan notifikasi sukses
       Swal.fire({
         title: 'Success!',
@@ -99,6 +112,9 @@ const EditProfile = () => {
       });
     } catch (error) {
       console.error('Error updating profile:', error);
+      if (error.response) {
+        console.error('Server Response Data:', error.response.data);
+      }
       // Menampilkan notifikasi error
       Swal.fire({
         title: 'Error!',
@@ -129,7 +145,7 @@ const EditProfile = () => {
               <img
                 className="mx-1 my-2 rounded"
                 style={{ height: "200px", width: "180px" }}
-                src={formData.url_profileImg ? URL.createObjectURL(formData.url_profileImg) : "default-image-url.jpg"}
+                src={formData.url_profileImg ? formData.url_profileImg : "default-image-url.jpg"}
                 alt="foto profile"
               />
               <FormGroup className="my-2" as={Row}>

@@ -24,35 +24,39 @@ const Profile = () => {
           throw new Error('Token tidak ditemukan');
         }
 
-        const response = await axios.get('http://localhost:3001/auth/profile', {
+        const response = await axios.get('http://localhost:3307/auth/profile', {
           headers: {
             'Authorization': `Bearer ${token}` // Mengirimkan token dalam headers request
           }
         });
 
-        // Log response untuk debugging
-        console.log('Profile data received:', response.data);
-
         // Mengatur data profil ke dalam state dari response.data.user
         setProfileData(response.data.user);
         setLoading(false); // Menghentikan status loading setelah request selesai
       } catch (error) {
+        // Mengatur pesan error jika terjadi kesalahan
         console.error('Error fetching profile data:', error);
-        setError(error.message || 'Error fetching profile data'); // Mengatur pesan error jika terjadi kesalahan
-        setLoading(false); // Menghentikan status loading setelah request selesai
-        
+        setError(error.message || 'Error fetching profile data');
+
         // Handle error khusus, misalnya redirect ke halaman login jika tidak authorized
         if (error.response && error.response.status === 401) {
           logout(); // Memanggil fungsi logout dari AuthContext
           window.location.href = "/login"; // Redirect ke halaman login
         }
+        setLoading(false); // Menghentikan status loading setelah request selesai
       }
     };
 
-    fetchProfile(); // Memanggil fungsi fetchProfile saat komponen Profile dimount
+    fetchProfile(); // Panggil fungsi fetchProfile saat komponen Profile di-mount
 
-    // Tidak memasukkan logout ke dalam dependency array useEffect karena fungsi logout tidak berubah
-  }, [logout]);
+    // Check if profileUpdated is true and update profile
+    const profileUpdated = localStorage.getItem('profileUpdated');
+    if (profileUpdated === 'true') {
+      localStorage.removeItem('profileUpdated'); // Hapus indikator setelah digunakan
+      fetchProfile(); // Lakukan fetch ulang data profil
+    }
+
+  }, [logout]); // Menambahkan dependency logout agar useEffect dapat digunakan dengan baik
 
   const handleLogout = () => {
     logout(); // Memanggil fungsi logout dari AuthContext
