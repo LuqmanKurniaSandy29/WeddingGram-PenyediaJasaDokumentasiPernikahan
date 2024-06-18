@@ -1,11 +1,14 @@
 var express = require('express');
 var router = express.Router();
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 var cloudinary = require('../library/cloudinaryConfig');
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' }); // Configure as needed
 var connection = require('../library/databaseConfig');
 const { verifyToken } = require('../controllers/authController');
+const SECRET_KEY = 'weddinggramkey';
+
 // Get All Customer
 module.exports = {
     getAllCustomer(req, res, next) {
@@ -131,7 +134,22 @@ module.exports = {
                     console.error('Error updating data:', err);
                     return res.json({ pesan: 'Data Gagal Diperbarui' });
                 } else {
-                    return res.send('Data Berhasil Diperbarui!');
+                    // Generate new token with updated profile information
+                    const token = jwt.sign({
+                        kode_customer: kode_customer,
+                        nama_customer: nama_customer,
+                        username: req.user.username, // Use the original username from the token
+                        alamat: alamat,
+                        email: email,
+                        no_hp: no_hp,
+                        url_profileImg: url_profileImg || req.user.url_profileImg,
+                        userType: 'customer'
+                    }, SECRET_KEY, { expiresIn: '1h' });
+
+                    return res.status(200).json({
+                        message: 'Data Berhasil Diperbarui!',
+                        token: token
+                    });
                 }
             });
         } catch (error) {
