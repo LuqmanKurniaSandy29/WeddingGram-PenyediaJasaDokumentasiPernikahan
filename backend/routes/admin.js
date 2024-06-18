@@ -7,5 +7,6 @@ const authController = require('../controllers/authController');
 router.get('/', verifyToken, adminController.getAllAdmins);
 router.post('/register', verifyToken, adminController.registerAdmin);
 router.get('/listpayment', verifyToken, adminController.listAllPayments);
+router.get('/listorder', verifyToken, adminController.getAllOrders);
 router.post('/listpayment/:kode_pembayaran', verifyToken, adminController.confirmPayment);
 module.exports = router;

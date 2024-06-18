@@ -78,6 +78,22 @@ module.exports = {
             }
         });
     },
+
+    getAllOrders(req, res, next) {
+        connection.query('SELECT * FROM tbl_order', function(err, rows) {
+            if (err) {
+                res.send('error', err);
+                res.json({
+                    data: ''
+                });
+            } else {
+                res.json({
+                    data: rows
+                });
+            }
+        });
+    },
+
     async generateKodeAdmin() {
         return new Promise((resolve, reject) => {
             const query = "SELECT MAX(kode_admin) as maxKode FROM tbl_admin";
