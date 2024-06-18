@@ -130,7 +130,7 @@ module.exports = {
     },
 
     listAllPayments(req, res, next) {
-        connection.query('SELECT * FROM tbl_pembayaran', function(err, rows) {
+        connection.query('SELECT * FROM tbl_pembayaran WHERE status_pembayaran = "Pengecekan Oleh Admin"', function(err, rows) {
             if (err) {
                 res.send('error', err);
                 res.json({
@@ -144,7 +144,7 @@ module.exports = {
         });
     },
     async confirmPayment(req, res) {
-        const { kode_pembayaran } = req.body;
+        let kode_pembayaran = req.params.kode_pembayaran;
         const kode_admin = req.user ? req.user.kode_admin : null;
 
         if (!kode_admin) {

@@ -1,17 +1,15 @@
 const express = require('express');
 const router = express.Router();
+const cron = require('node-cron');
 const connection = require('../library/databaseConfig');
-
-
 
 module.exports = {
     generateKodeOrder() {
-        return 'ORD' + Math.random().toString(36).substr(2, 9); // Contoh sederhana, bisa disesuaikan
+        return 'ORD' + Math.random().toString(36).substr(2, 9);
     },
 
-    // Fungsi untuk menghasilkan kode pembayaran acak
     generateKodePembayaran() {
-        return 'PB' + Math.random().toString(36).substr(2, 9); // Contoh sederhana, bisa disesuaikan
+        return 'PB' + Math.random().toString(36).substr(2, 9);
     },
 
     beginTransaction() {
@@ -141,5 +139,43 @@ module.exports = {
             await module.exports.rollbackTransaction();
             res.status(500).send('Error creating order');
         }
+    },
+
+    async updateOrderStatus() {
+        const currentDate = new Date();
+
+        return new Promise((resolve, reject) => {
+            const query = `
+                UPDATE tbl_order 
+                SET status_order = 'Selesai'
+                WHERE tanggal_acara < ? AND status_order = 'Di Proses'
+            `;
+
+            connection.query(query, [currentDate], (err, result) => {
+                if (err) {
+                    console.error('Error updating order status:', err);
+                    return reject('Error updating order status');
+                }
+                console.log('Updated order status:', result);
+                resolve(result);
+            });
+        });
+    },
+
+    // Function to initialize the cron job
+    initOrderStatusUpdater() {
+        cron.schedule('*/5 * * * *', async() => {
+            // This will run every minute
+            try {
+                console.log('Running order status update task...');
+                await module.exports.updateOrderStatus();
+                console.log('Order status update task completed.');
+            } catch (error) {
+                console.error('Error in order status update task:', error);
+            }
+        });
     }
-}
+};
+
+// Immediately initialize the cron job
+module.exports.initOrderStatusUpdater();
