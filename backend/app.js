@@ -38,9 +38,9 @@ app.use('/order', orderRoutes);
 app.use('/payment', paymentRoutes);
 
 // Port Configuration
-// var PORT = 4607; // Change this to the desired port number
+var PORT = 3001; // Change this to the desired port number
 
-// app.listen(PORT, () => {
-//     console.log(`Server is running on http://localhost:${PORT}`);
-// });
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
 module.exports = app;

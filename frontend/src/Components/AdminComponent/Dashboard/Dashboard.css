@@ -221,3 +221,39 @@
     align-items: center;
   }
 }
+
+.dropdown-item:active {
+  background-color: #fff;
+}
+
+.dropdown-item:hover {
+  color: black;
+}
+
+.custom-dropdown-toggle {
+  background-color: #D5A351; 
+  border: none;
+  color: white;
+
+  &:active {
+    background-color: #D5A351; 
+    border: none;
+    color: white;
+  }
+
+  &:hover {
+    background-color: #D5A351; 
+    border: none;
+    color: white;
+  }
+
+  &:focus {
+    background-color: #D5A351; 
+    border: none;
+    color: white;
+  }
+}
+
+.dropdown-link-active-bg{
+  background-color: #D5A351; 
+}

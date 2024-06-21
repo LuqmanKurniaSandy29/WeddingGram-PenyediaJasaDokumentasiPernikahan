@@ -1,136 +1,115 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Swal from "sweetalert2"; // Import SweetAlert2 untuk menampilkan notifikasi
+import Swal from "sweetalert2";
 import { Col, Container, Form, FormGroup, Row } from "react-bootstrap";
 import "../EditProfile/EditProfile.css";
 
 const EditProfile = () => {
-  // State untuk menyimpan data formulir
   const [formData, setFormData] = useState({
-    name: "",
-    username: "",
+    name: "", 
     alamat: "",
     no_hp: "",
     email: "",
-    imgProfile: null,
     url_profileImg: "",
+    newProfileImg: null,
   });
 
-  // State untuk mengelola status loading dan error
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // useEffect untuk mengambil data profil saat komponen dimuat
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
-        // Mendapatkan token dari localStorage
         const token = localStorage.getItem('token');
         if (!token) throw new Error('Token tidak ditemukan');
 
-        // Mengirim permintaan GET ke endpoint untuk mengambil data profil
         const response = await axios.get('http://localhost:3001/auth/profile', {
           headers: { 'Authorization': `Bearer ${token}` }
         });
 
-        // Mengatur data yang diterima ke dalam state formData
-        const { name, username, alamat, no_hp, email, url_profileImg } = response.data.user;
-        setFormData({ name, username, alamat, no_hp, email, imgProfile: null, url_profileImg });
-        setLoading(false); // Menghentikan status loading setelah data diterima
+        const { name, alamat, no_hp, email, url_profileImg } = response.data.user;
+        setFormData({ name, alamat, no_hp, email, url_profileImg, newProfileImg: null });
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching profile data:', error);
-        setError(error.message || 'Error fetching profile data'); // Mengatur pesan error jika terjadi kesalahan
-        setLoading(false); // Menghentikan status loading setelah terjadi kesalahan
+        setError(error.message || 'Error fetching profile data');
+        setLoading(false);
       }
     };
 
     fetchProfileData();
   }, []);
 
-  // Fungsi untuk menangani perubahan input teks
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  // Fungsi untuk menangani perubahan input file
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setFormData((prevData) => ({
       ...prevData,
-      imgProfile: file,
+      newProfileImg: file,
       url_profileImg: URL.createObjectURL(file),
     }));
   };
 
-  // Fungsi untuk menangani submit formulir
   const handleSubmit = async (event) => {
     event.preventDefault();
     event.stopPropagation();
-
+  
     try {
-      // Mendapatkan token dari localStorage
       const token = localStorage.getItem('token');
       if (!token) throw new Error('Token tidak ditemukan');
-
-      // Mengatur data form ke dalam FormData untuk mengirim file
+  
       const formDataToSend = new FormData();
-      formDataToSend.append('name', formData.name);
-      formDataToSend.append('username', formData.username);
+      formDataToSend.append('nama_customer', formData.name); 
       formDataToSend.append('alamat', formData.alamat);
       formDataToSend.append('no_hp', formData.no_hp);
       formDataToSend.append('email', formData.email);
-      if (formData.imgProfile) {
-        formDataToSend.append('imgProfile', formData.imgProfile);
+      if (formData.newProfileImg) {
+        formDataToSend.append('url_profileImg', formData.newProfileImg);
       }
-
-      // Mengirim permintaan PUT ke endpoint untuk memperbarui profil
+  
       const response = await axios.put('http://localhost:3001/customer/editprofile', formDataToSend, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
         },
       });
-
-      // Log respons dari server untuk debugging
-      console.log('Server response:', response);
-
-      // Memperbarui formData dengan url_profileImg yang baru
-      setFormData(prevData => ({
-        ...prevData,
-        url_profileImg: formDataToSend.get('imgProfile') ? URL.createObjectURL(formDataToSend.get('imgProfile')) : prevData.url_profileImg,
-      }));
-
-      // Menampilkan notifikasi sukses
+  
+      console.log('Server response:', response.data);
+  
+      // Assuming the server sends a new JWT token in response
+      const newToken = response.data.token;
+      if (newToken) {
+        localStorage.setItem('token', newToken);
+      }
+  
       Swal.fire({
         title: 'Success!',
         text: 'Profile updated successfully!',
         icon: 'success',
         confirmButtonText: 'OK',
       }).then(() => {
-        window.location.href = "/profile"; // Redirect ke halaman profil setelah berhasil
+        localStorage.setItem('profileUpdated', 'true');
+        window.location.href = "/profile"; 
       });
     } catch (error) {
       console.error('Error updating profile:', error);
-      if (error.response) {
-        console.error('Server Response Data:', error.response.data);
-      }
-      // Menampilkan notifikasi error
       Swal.fire({
         title: 'Error!',
-        text: error.response?.data?.message || 'Failed to update profile.',
+        text: error.response?.data?.message || 'Gagal Update update profile.',
         icon: 'error',
         confirmButtonText: 'OK',
       });
     }
   };
 
-  // Kondisi saat sedang loading data
   if (loading) {
     return <p>Loading...</p>;
   }
 
-  // Kondisi saat terjadi error
   if (error) {
     return <p>Error: {error}</p>;
   }
@@ -150,7 +129,7 @@ const EditProfile = () => {
               />
               <FormGroup className="my-2" as={Row}>
                 <Col lg={12} className="my-1">
-                  <Form.Control type="file" name="imgProfile" onChange={handleFileChange} />
+                  <Form.Control type="file" name="url_profileImg" onChange={handleFileChange} />
                 </Col>
               </FormGroup>
             </Col>
@@ -159,20 +138,10 @@ const EditProfile = () => {
                 <Form.Label className="fw-bold">Nama</Form.Label>
                 <Form.Control
                   type="text"
-                  name="name"
-                  value={formData.name}
+                  name="name" 
+                  value={formData.name} 
                   onChange={handleChange}
                   placeholder="Nama"
-                />
-              </Form.Group>
-              <Form.Group className="my-3" controlId="ControlInputUsername">
-                <Form.Label className="fw-bold">Username</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="username"
-                  value={formData.username}
-                  onChange={handleChange}
-                  placeholder="Username"
                 />
               </Form.Group>
               <Form.Group className="my-3" controlId="ControlInputAddress">

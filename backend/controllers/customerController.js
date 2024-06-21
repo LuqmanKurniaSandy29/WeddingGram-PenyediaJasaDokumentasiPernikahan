@@ -110,51 +110,51 @@ module.exports = {
 
     async editCustomerProfile(req, res) {
         try {
-            const { nama_customer, alamat, email, no_hp } = req.body;
-            const file = req.file;
-
-            const kode_customer = req.user ? req.user.kode_customer : null;
-            if (!kode_customer) {
-                return res.status(401).json({ error: 'Unauthorized' });
+          const { nama_customer, alamat, email, no_hp } = req.body;
+          const file = req.file;
+      
+          const kode_customer = req.user ? req.user.kode_customer : null;
+          if (!kode_customer) {
+            return res.status(401).json({ error: 'Unauthorized' });
+          }
+      
+          let url_profileImg = '';
+          if (file) {
+            const result = await cloudinary.uploader.upload(file.path);
+            url_profileImg = result.secure_url;
+          }
+      
+          const updateData = { nama_customer, alamat, email, no_hp };
+          if (url_profileImg) {
+            updateData.url_profileImg = url_profileImg;
+          }
+      
+          connection.query('UPDATE tbl_customer SET ? WHERE kode_customer = ?', [updateData, kode_customer], function(err, result) {
+            if (err) {
+              console.error('Error updating data:', err);
+              return res.status(500).json({ pesan: 'Data Gagal Diperbarui' });
+            } else {
+              // Generate new token with updated profile information
+              const updatedToken = jwt.sign({
+                kode_customer: kode_customer,
+                name: nama_customer, // Ubah 'nama_customer' menjadi 'name'
+                username: req.user.username,
+                alamat: alamat,
+                email: email,
+                no_hp: no_hp,
+                url_profileImg: url_profileImg || req.user.url_profileImg,
+                userType: 'customer'
+              }, SECRET_KEY, { expiresIn: '1h' });
+      
+              return res.status(200).json({
+                message: 'Data Berhasil Diperbarui!',
+                token: updatedToken // Kirim token yang telah diperbarui kembali ke frontend
+              });
             }
-
-            let url_profileImg = '';
-            if (file) {
-                const result = await cloudinary.uploader.upload(file.path);
-                url_profileImg = result.secure_url;
-            }
-
-            const updateData = { nama_customer, alamat, email, no_hp };
-            if (url_profileImg) {
-                updateData.url_profileImg = url_profileImg;
-            }
-
-            connection.query('UPDATE tbl_customer SET ? WHERE kode_customer = ?', [updateData, kode_customer], function(err, result) {
-                if (err) {
-                    console.error('Error updating data:', err);
-                    return res.json({ pesan: 'Data Gagal Diperbarui' });
-                } else {
-                    // Generate new token with updated profile information
-                    const token = jwt.sign({
-                        kode_customer: kode_customer,
-                        nama_customer: nama_customer,
-                        username: req.user.username, // Use the original username from the token
-                        alamat: alamat,
-                        email: email,
-                        no_hp: no_hp,
-                        url_profileImg: url_profileImg || req.user.url_profileImg,
-                        userType: 'customer'
-                    }, SECRET_KEY, { expiresIn: '1h' });
-
-                    return res.status(200).json({
-                        message: 'Data Berhasil Diperbarui!',
-                        token: token
-                    });
-                }
-            });
+          });
         } catch (error) {
-            console.error('Error during profile update:', error);
-            return res.status(500).json({ error: 'Failed To Update Profile' });
+          console.error('Error during profile update:', error);
+          return res.status(500).json({ error: 'Failed To Update Profile' });
         }
-    }
+      }      
 };

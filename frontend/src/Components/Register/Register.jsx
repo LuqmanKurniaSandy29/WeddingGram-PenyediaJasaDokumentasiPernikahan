@@ -31,7 +31,7 @@ function Register() {
     }
 
     try {
-      const response = await axios.post("http://localhost:3307/customer/register", formData);
+      const response = await axios.post("http://localhost:3001/customer/register", formData);
       Swal.fire({
         icon: "success",
         title: "Registrasi Berhasil",
@@ -78,19 +78,6 @@ function Register() {
                   />
                   <Form.Control.Feedback type="invalid">Mohon masukan nama Anda</Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group controlId="validationCustom02">
-                  <Form.Label className="mt-1 fw-bold">Email</Form.Label>
-                  <Form.Control
-                    required
-                    type="email"
-                    placeholder="Masukkan alamat email Anda"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="form-control-regist"
-                  />
-                  <Form.Control.Feedback type="invalid">Mohon masukan alamat email Anda</Form.Control.Feedback>
-                </Form.Group>
                 <Form.Group controlId="validationCustom03">
                   <Form.Label className="mt-1 fw-bold">Username</Form.Label>
                   <Form.Control
@@ -103,6 +90,19 @@ function Register() {
                     className="form-control-regist"
                   />
                   <Form.Control.Feedback type="invalid">Mohon masukkan username</Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group controlId="validationCustom02">
+                  <Form.Label className="mt-1 fw-bold">Email</Form.Label>
+                  <Form.Control
+                    required
+                    type="email"
+                    placeholder="Masukkan alamat email Anda"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="form-control-regist"
+                  />
+                  <Form.Control.Feedback type="invalid">Mohon masukan alamat email Anda</Form.Control.Feedback>
                 </Form.Group>
               </div>
             </Col>

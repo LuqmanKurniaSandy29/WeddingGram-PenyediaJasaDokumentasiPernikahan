@@ -160,7 +160,7 @@ module.exports = {
         });
     },
     async confirmPayment(req, res) {
-        let kode_pembayaran = req.params.kode_pembayaran;
+        const kode_pembayaran = req.body.kode_pembayaran;
         const kode_admin = req.user ? req.user.kode_admin : null;
 
         if (!kode_admin) {

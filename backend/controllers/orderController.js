@@ -133,7 +133,7 @@ module.exports = {
             // Commit transaksi
             await module.exports.commitTransaction();
 
-            res.status(200).send('Order created successfully');
+            res.status(200).json({ message: 'Order created successfully', kode_pembayaran });
         } catch (err) {
             console.error('Error during order creation:', err);
             await module.exports.rollbackTransaction();
@@ -164,8 +164,8 @@ module.exports = {
 
     // Function to initialize the cron job
     initOrderStatusUpdater() {
-        cron.schedule('*/5 * * * *', async() => {
-            // This will run every minute
+        cron.schedule('0 0 * * *', async() => {
+            // This will run every 1 day
             try {
                 console.log('Running order status update task...');
                 await module.exports.updateOrderStatus();

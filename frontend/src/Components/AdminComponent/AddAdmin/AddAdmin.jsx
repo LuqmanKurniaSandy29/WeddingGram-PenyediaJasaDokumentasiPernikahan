@@ -34,7 +34,7 @@ const AddAdmin = () => {
             };
 
             // Kirim permintaan ke server dengan nama_admin
-            const response = await axios.post('http://localhost:3307/admin/register', {
+            const response = await axios.post('http://localhost:3001/admin/register', {
                 nama_admin: namaAdmin,
                 username: username,
                 password: password // Pastikan ini sesuai dengan apa yang diharapkan oleh backend
@@ -121,7 +121,7 @@ const AddAdmin = () => {
                                 </Form.Group>
                                 <div className="text-center my-3">
                                     <button type="submit" className="custom-button py-2 px-3 fw-semibold">
-                                        Add Admin
+                                        Register Admin
                                     </button>
                                     <p className='my-3'>
                                         <a href="/admin">kembali ke dashboard</a>

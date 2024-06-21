@@ -35,7 +35,7 @@ const Service = () => {
     const packages = [
         {
             title: "Paket Wedding Favorite",
-            price: "Rp. 3.589.000 - Rp. 4.097.000",
+            price: "Rp. 4.000.000",
             image: picture1,
             details: [
                 "1 Fotografer",
@@ -49,7 +49,7 @@ const Service = () => {
         },
         {
             title: "Paket Wedding Exclusive",
-            price: "Rp. 4.449.000 - Rp. 5.097.000",
+            price: "Rp. 5.000.000",
             image: picture2,
             details: [
                 "2 Fotografer",
@@ -65,7 +65,7 @@ const Service = () => {
         },
         {
             title: "Paket Wedding Glamour",
-            price: "Rp. 5.559.000 - Rp. 6.097.000",
+            price: "Rp. 6.000.000",
             image: picture4,
             details: [
                 "2 Fotografer dan 2 Videografer (1 Crew)",
@@ -78,7 +78,7 @@ const Service = () => {
         },
         {
             title: "Paket Wedding Gold",
-            price: "Rp. 8.799.000 - Rp. 9.097.000",
+            price: "Rp. 7.000.000",
             image: picture6,
             details: [
                 "2 Fotografer dan 2 Videografer (1 Crew)",
@@ -108,7 +108,7 @@ const Service = () => {
                                     <Card.Img variant="top" src={pkg.image} />
                                     <Card.Body>
                                         <Card.Title>{pkg.title}</Card.Title>
-                                        <Card.Text>
+                                        <Card.Text className='fw-bold'>
                                             {pkg.price}
                                         </Card.Text>
                                         <button

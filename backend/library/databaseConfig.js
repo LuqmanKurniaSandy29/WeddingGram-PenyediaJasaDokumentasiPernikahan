@@ -2,11 +2,10 @@ let mysql = require('mysql');
 
 // Koneksi Database
 let connection = mysql.createConnection({
-    host: 'educalab.id',
-    user: 'fKhuBKBZuFIG2GwZ',
-    password: 'GHf8KDMfxfZNj2lS',
-    database: '5fbQdJMpXEk60HrU',
-    port: 3307
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'weddinggram'
 });
 
 // Cek Koneksi Database

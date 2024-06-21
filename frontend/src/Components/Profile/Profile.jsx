@@ -24,7 +24,7 @@ const Profile = () => {
           throw new Error('Token tidak ditemukan');
         }
 
-        const response = await axios.get('http://localhost:3307/auth/profile', {
+        const response = await axios.get('http://localhost:3001/auth/profile', {
           headers: {
             'Authorization': `Bearer ${token}` // Mengirimkan token dalam headers request
           }
@@ -74,7 +74,7 @@ const Profile = () => {
   }
 
   // Log profileData untuk memastikan datanya benar
-  console.log('Profile Data in render:', profileData);
+  // console.log('Profile Data in render:', profileData);
 
   // Tampilkan JSON profileData untuk debugging
   return (
