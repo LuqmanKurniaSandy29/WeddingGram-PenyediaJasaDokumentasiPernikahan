@@ -5,8 +5,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import "./Dashboard.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import axios from "axios";
-import AuthContext from "../../../Context/AuthContext"; // Correct Import Path
-
+import AuthContext from "../../../Context/AuthContext";
 
 function NotFound() {
   return (
@@ -45,7 +44,7 @@ function Dashboard({ onMenuClick, activeMenu }) {
 
         if (error.response && error.response.status === 401) {
           logout(); // Memanggil fungsi logout dari AuthContext
-          window.location.href = "/login"; // Redirect ke halaman login
+          window.location.href = "/loginadmin"; // Redirect ke halaman login
         }
         setLoading(false); // Menghentikan status loading setelah request selesai
       }
@@ -68,23 +67,23 @@ function Dashboard({ onMenuClick, activeMenu }) {
 
   // Kondisi ketika sedang loading data
   if (loading) {
-    return <p>Loading...</p>; // Menampilkan pesan loading
+    return <p>Loading...</p>;
   }
 
   if (error || !profileData) {
-    return <NotFound />; // Menampilkan halaman 404
+    return <NotFound />;
   }
 
-  console.log('Profile Data in render:', profileData);
-
   return (
-    <div className="container-fluid">
-      <div className="row-admin">
+      <div className="row-admin vh-100">
         <div className="side">
+          <div className="text-center">
           <img className="logo-admin" src={gambar} alt="Gambar" />
-          <h5 className="custom-text-admin">Selamat Datang</h5>
-          <h4 className="custom-text-admin">{profileData.name || 'N/A'}</h4>
+          <h5>Selamat Datang</h5>
+          <h4>{profileData.name || 'N/A'}</h4>
           <hr className="text-secondary" />
+          </div>
+          <div className="text-left">
           <ul className="nav nav-pills flex-column mb-auto">
             <li className="nav-item text-white my-1">
               <a href="#home" className={`nav-link text-white small ${activeMenu === "home" ? "active" : ""}`} aria-current="page" onClick={() => onMenuClick("home")}>
@@ -105,21 +104,20 @@ function Dashboard({ onMenuClick, activeMenu }) {
               </a>
             </li>
           </ul>
-        </div>
-
           <div className="dropdown-admin">
-            <Dropdown>
-              <Dropdown.Toggle className="custom-dropdown-toggle" id="dropdown-basic">
-                <i className="ms-4 bi bi-person-circle" ></i>
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item href="/addadmin">Register Admin</Dropdown.Item>
-                <Dropdown.Item onClick={handleLogout}>LogOut</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+          <Dropdown>
+            <Dropdown.Toggle className="custom-dropdown-toggle" id="dropdown-basic">
+              <i className="mx-1 bi bi-person-circle"></i> Admin Menu
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item href="/addadmin">Register Admin</Dropdown.Item>
+              <Dropdown.Item onClick={handleLogout}>LogOut</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
           </div>
+        </div>
       </div>
-    </div>
   );
 }
 

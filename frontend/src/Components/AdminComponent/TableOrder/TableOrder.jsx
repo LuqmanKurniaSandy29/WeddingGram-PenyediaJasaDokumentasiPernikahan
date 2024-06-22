@@ -46,7 +46,7 @@ const TableOrder = () => {
       }).then(() => {
         localStorage.removeItem('token');
         localStorage.removeItem('customerData');
-        window.location.href = "/login";
+        window.location.href = "/loginadmin";
       });
     } else {
       Swal.fire({
@@ -76,9 +76,9 @@ const TableOrder = () => {
   };
 
   return (
-    <div className="col">
-      <div className="tabel-admin" style={{ maxHeight: '500px', overflowY: 'scroll' }}>
-        <Table striped bordered hover>
+    <div className="col py-5 px-3">
+      <div className="tabel-admin" style={{ maxHeight: '700px', overflowY: 'auto' }}>
+        <Table striped bordered hover className="py-5">
           <thead>
             <tr>
               <th id="header">Kode Order</th>

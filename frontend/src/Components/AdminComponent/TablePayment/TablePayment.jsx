@@ -100,7 +100,7 @@ const TablePayment = () => {
   };
 
   return (
-    <div className="col">
+    <div className="col py-5 px-3">
       <div className="tabel-admin">
         <Table striped bordered hover>
           <thead>

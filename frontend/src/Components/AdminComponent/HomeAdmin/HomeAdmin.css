@@ -1,0 +1,54 @@
+/* HomeAdmin.css */
+
+#home-admin {
+    padding: 20px;
+}
+  
+.card-admin {
+    border-radius: 5px;
+    height: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+  
+.card-admin:hover {
+    transform: translateY(-10px);
+}
+  
+.card-admin .card-body-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+  
+.card-admin .content-admin {
+    text-align: center;
+}
+  
+.card-admin .content-admin .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex; /* Untuk menggunakan flexbox */
+    align-items: center; /* Pusatkan vertikal ikon */
+}
+
+.card-admin .content-admin .card-title i {
+    font-size: 2rem; /* Ubah ukuran ikon */
+    margin-right: 10px; /* Beri sedikit ruang di sebelah kanan ikon */
+}
+
+.card-admin .content-admin .card-text {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+  
+.card-admin .content-admin .text-muted {
+    font-size: 1rem;
+}
+  
+@media (max-width: 576px) {
+    .card-admin {
+        margin-bottom: 20px;
+    }
+}

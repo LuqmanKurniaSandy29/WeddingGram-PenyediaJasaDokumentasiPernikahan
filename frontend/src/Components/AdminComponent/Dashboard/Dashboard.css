@@ -1,232 +1,31 @@
 .logo-admin {
   width: 135px;
   height: 135px;
-  margin: 25px 10px 0 70px;
+  margin: 25px auto;
   border-radius: 180px;
 }
 
 .custom-text-admin {
-  text-align: center;
+  text-align: left;
   margin-top: 15px;
-}
-
-.tabel-admin {
-  margin: 50px 40px 0 0;
-  width: 950px;
 }
 
 .row-admin {
   background-color: black;
   color: white;
   min-height: 100vh;
-  margin-left: -20px;
   width: 300px;
-}
-
-#home-admin {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  flex-direction: column;
-  padding-top: 20px;
-}
-
-.home-row1-admin {
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  margin-right: 50px;
-}
-
-.card-body-flex-admin {
-  display: flex;
-  align-items: flex-start;
-}
-
-.card-icon-admin {
-  font-size: 4rem;
-  margin: 5px 10px 0 0;
-}
-
-.content-admin {
-  display: flex;
-  flex-direction: column;
-  margin-left: 20px;
-}
-
-.card-admin {
-  width: 25rem;
-  margin: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 0 20px;
 }
 
 .dropdown-admin {
-  margin: 100px 0 0 170px;
+  margin-top: 50px;
+  text-align: left;
+  margin-left: 30px;
 }
 
-.bar-admin {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@media screen and (max-width: 880px) {
-  .logo-admin {
-    width: 135px;
-    height: 135px;
-    margin: 25px 10px 0 40px;
-    border-radius: 180px;
-  }
-
-  .custom-text-admin {
-    text-align: center;
-    margin-top: 15px;
-  }
-
-  .tabel-admin {
-    margin: 50px 40px 0 0;
-    width: 950px;
-  }
-
-  .row-admin {
-    background-color: black;
-    color: white;
-    margin-left: -12px;
-    min-height: 180vh;
-    width: 220px;
-  }
-
-  #home-admin {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 200px;
-    height: 100vh;
-    flex-direction: column;
-  }
-
-  .home-row1-admin {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-  }
-
-  .card-body-flex-admin {
-    display: flex;
-    align-items: flex-start;
-  }
-
-  .card-icon-admin {
-    font-size: 4rem;
-    margin: 5px 10px 0 0;
-  }
-
-  .content-admin {
-    display: flex;
-    flex-direction: column;
-    margin-left: 20px;
-  }
-
-  .card-admin {
-    width: 25rem;
-    margin: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  .dropdown-admin {
-    margin: 50px 0 0 150px;
-    margin-bottom: 20px;
-  }
-
-  .bar-admin {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-@media screen and (max-width: 426px) {
-  .logo-admin {
-    width: 135px;
-    height: 135px;
-    margin: 25px 10px 0 40px;
-    border-radius: 180px;
-  }
-
-  .custom-text-admin {
-    text-align: center;
-    margin-top: 15px;
-  }
-
-  .tabel-admin {
-    margin: 50px 40px 0 0;
-    width: 950px;
-  }
-
-  .row-admin {
-    background-color: black;
-    color: white;
-    margin-left: -12px;
-    min-height: 180vh;
-    width: 220px;
-  }
-
-  #home-admin {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 200px;
-    height: 100vh;
-    flex-direction: column;
-  }
-
-  .home-row1-admin {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-  }
-
-  .card-body-flex-admin {
-    display: flex;
-    align-items: flex-start;
-  }
-
-  .card-icon-admin {
-    font-size: 4rem;
-    margin: 5px 10px 0 0;
-  }
-
-  .content-admin {
-    display: flex;
-    flex-direction: column;
-    margin-left: 20px;
-  }
-
-  .card-admin {
-    width: 20rem;
-    margin: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  .dropdown-admin {
-    margin: 50px 0 0 150px;
-    margin-bottom: 20px;
-  }
-
-  .bar-admin {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-.dropdown-item:active {
+.dropdown-item:active, .dropdown-item:hover {
   background-color: #fff;
-}
-
-.dropdown-item:hover {
   color: black;
 }
 
@@ -234,26 +33,61 @@
   background-color: #D5A351; 
   border: none;
   color: white;
+}
 
-  &:active {
-    background-color: #D5A351; 
-    border: none;
-    color: white;
+.custom-dropdown-toggle:active,
+.custom-dropdown-toggle:hover,
+.custom-dropdown-toggle:focus {
+  background-color: #D5A351; 
+  border: none;
+  color: white;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 880px) {
+
+  .logo-admin {
+    width: 100px;
+    height: 100px;
+    margin: 25px auto;
+    border-radius: 50%;
   }
 
-  &:hover {
-    background-color: #D5A351; 
-    border: none;
-    color: white;
+  .row-admin {
+    width: 100%;
+    padding: 0;
+    min-height: auto;
+    text-align: left;
   }
 
-  &:focus {
-    background-color: #D5A351; 
-    border: none;
-    color: white;
+  .dropdown-admin {
+    margin-top: 20px;
   }
 }
 
-.dropdown-link-active-bg{
-  background-color: #D5A351; 
+@media screen and (max-width: 426px) {
+
+
+  .logo-admin {
+    width: 60px;
+    height: 60px;
+    margin: 20px auto;
+    border-radius: 50%;
+  }
+
+  .row-admin {
+    width: 100%;
+    padding: 0;
+    min-height: auto;
+  }
+
+  .dropdown-admin {
+    margin-top: 20px;
+  }
+
+  .card-admin {
+    width: 90%;
+    margin: 10px auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
 }

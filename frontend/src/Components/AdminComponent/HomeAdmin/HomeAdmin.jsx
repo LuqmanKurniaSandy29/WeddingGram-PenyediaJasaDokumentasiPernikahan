@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Card } from "react-bootstrap";
+import { Card, Container, Row, Col } from "react-bootstrap";
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import 'bootstrap-icons/font/bootstrap-icons.css'; // Import Bootstrap Icons
+import './HomeAdmin.css'; // Import the custom CSS
 
 const HomeAdmin = () => {
   const [orders, setOrders] = useState({
@@ -100,49 +102,57 @@ const HomeAdmin = () => {
   };
 
   return (
-    <div id="home-admin">
-      <div className="home-row1-admin">
-        <Card id="card1" className="card-admin">
-          <Card.Body className="card-body-flex">
-            <i className="ms-3 bi bi-graph-up card-icon-admin"></i>
-            <div className="content-admin">
-              <Card.Title>Pesanan</Card.Title>
-              <Card.Text>
-                <button className="me-3">{orders.terlaksana} Terlaksana</button>
-                <button style={{ marginTop: "10px" }}>{orders.akanTerlaksana} Akan Terlaksana</button>
-              </Card.Text>
-            </div>
-          </Card.Body>
-        </Card>
-      </div>
-      <div className="home-row1-admin">
-        <Card id="card2" className="card-admin">
-          <Card.Body className="card-body-flex">
-            <i className="ms-3 bi bi-bank card-icon-admin"></i>
-            <div className="content-admin">
-              <Card.Title>Pendapatan</Card.Title>
-              <Card.Text>
-                <button>Rp. {orders.pendapatan.toLocaleString('id-ID')}</button>
-              </Card.Text>
-            </div>
-          </Card.Body>
-        </Card>
-      </div>
-      <div className="home-row1-admin">
-        <Card id="card4" className="card-admin">
-          <Card.Body className="card-body-flex">
-            <i className="ms-3 bi bi-file-person-fill card-icon-admin"></i>
-            <div className="content-admin">
-              <Card.Title>Admin</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">Total Admin</Card.Subtitle>
-              <Card.Text>
-                <button>{adminCount}</button>
-              </Card.Text>
-            </div>
-          </Card.Body>
-        </Card>
-      </div>
-    </div>
+    <Container id="home-admin" className="my-4">
+      <Row className="justify-content-left mb-4">
+        <Col lg={6} md={6} sm={12} className="mb-4">
+          <Card className="card-admin">
+            <Card.Body className="d-flex flex-column justify-content-center align-items-center">
+              <div className="content-admin text-left">
+                <Card.Title>
+                  <i className="bi bi-box-seam"></i> Pesanan
+                </Card.Title>
+                <Card.Text>
+                  {orders.terlaksana} Terlaksana
+                </Card.Text>
+                <Card.Text>
+                  {orders.akanTerlaksana} Akan Terlaksana
+                </Card.Text>
+              </div>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col lg={6} md={6} sm={12} className="mb-4">
+          <Card className="card-admin">
+            <Card.Body className="d-flex flex-column justify-content-center align-items-center">
+              <div className="content-admin text-left">
+                <Card.Title>
+                  <i className="bi bi-currency-dollar"></i> Pendapatan
+                </Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">Total Pendapatan</Card.Subtitle>
+                <Card.Text>
+                  Rp. {orders.pendapatan.toLocaleString('id-ID')}
+                </Card.Text>
+              </div>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col lg={6} md={6} sm={12} className="mb-4">
+          <Card className="card-admin">
+            <Card.Body className="d-flex flex-column justify-content-center align-items-center">
+              <div className="content-admin text-left">
+                <Card.Title>
+                  <i className="bi bi-people"></i> Admin
+                </Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">Total Admin</Card.Subtitle>
+                <Card.Text>
+                  {adminCount}
+                </Card.Text>
+              </div>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
