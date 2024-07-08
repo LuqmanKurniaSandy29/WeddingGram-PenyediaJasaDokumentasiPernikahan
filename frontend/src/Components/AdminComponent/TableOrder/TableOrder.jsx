@@ -77,7 +77,7 @@ const TableOrder = () => {
 
   return (
     <div className="col py-5 px-3">
-      <div className="tabel-admin" style={{ maxHeight: '700px', overflowY: 'auto' }}>
+      <div className="tabel-admin" style={{ maxHeight: '700px', minWidth: '1000px', overflowY: 'auto', overflowX: 'auto' }}>
         <Table striped bordered hover className="py-5">
           <thead>
             <tr>

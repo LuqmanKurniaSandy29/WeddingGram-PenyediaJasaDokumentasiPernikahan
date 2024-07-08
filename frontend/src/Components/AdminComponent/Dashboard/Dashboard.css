@@ -1,3 +1,57 @@
+/* Responsive Design */
+@media screen and (max-width: 880px) {
+  .logo-admin {
+    width: 100px;
+    height: 100px;
+    margin: 25px auto;
+    border-radius: 50%;
+  }
+
+  .row-admin {
+    width: 100%;
+    padding: 0;
+    min-height: auto;
+    text-align: left;
+  }
+
+  .dropdown-admin {
+    margin-top: 20px;
+  }
+
+  .toggle-button {
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+  }
+}
+
+/* Hide the toggle button for screen sizes above 768px */
+@media (min-width: 769px) {
+  .toggle-button {
+    display: none;
+  }
+
+  .sidebar {
+    display: block !important; /* Gunakan !important untuk memastikan display: block diterapkan */
+  }
+
+  .offcanvas-body {
+    display: none !important; /* Gunakan !important untuk memastikan display: none diterapkan */
+  }
+}
+
+/* Ensure the offcanvas is always displayed for small screens */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none !important; /* Gunakan !important untuk memastikan display: none diterapkan */
+  }
+
+  .offcanvas-body {
+    display: block !important; /* Gunakan !important untuk memastikan display: block diterapkan */
+  }
+}
+
+/* Your existing styles */
 .logo-admin {
   width: 135px;
   height: 135px;
@@ -24,13 +78,14 @@
   margin-left: 30px;
 }
 
-.dropdown-item:active, .dropdown-item:hover {
+.dropdown-item:active,
+.dropdown-item:hover {
   background-color: #fff;
   color: black;
 }
 
 .custom-dropdown-toggle {
-  background-color: #D5A351; 
+  background-color: #d5a351;
   border: none;
   color: white;
 }
@@ -38,36 +93,12 @@
 .custom-dropdown-toggle:active,
 .custom-dropdown-toggle:hover,
 .custom-dropdown-toggle:focus {
-  background-color: #D5A351; 
+  background-color: #d5a351;
   border: none;
   color: white;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 880px) {
-
-  .logo-admin {
-    width: 100px;
-    height: 100px;
-    margin: 25px auto;
-    border-radius: 50%;
-  }
-
-  .row-admin {
-    width: 100%;
-    padding: 0;
-    min-height: auto;
-    text-align: left;
-  }
-
-  .dropdown-admin {
-    margin-top: 20px;
-  }
-}
-
 @media screen and (max-width: 426px) {
-
-
   .logo-admin {
     width: 60px;
     height: 60px;

@@ -17,7 +17,7 @@ function FAQ() {
         {
             id: 3,
             question: "Berapa harga setiap paket layanan?",
-            answer: "Harga paket layanan WeddingGram bervariasi, mulai dari Rp. 3.589.000 hingga Rp. 9.097.000."
+            answer: "Harga paket layanan WeddingGram bervariasi, mulai dari Rp. 4.000.000 hingga Rp. 7.000.000."
         },
         {
             id: 4,

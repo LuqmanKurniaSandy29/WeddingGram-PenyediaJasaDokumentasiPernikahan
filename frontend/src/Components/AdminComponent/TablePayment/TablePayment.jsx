@@ -41,7 +41,7 @@ const TablePayment = () => {
       }).then(() => {
         localStorage.removeItem('token');
         localStorage.removeItem('customerData');
-        window.location.href = "/login";
+        window.location.href = "/loginadmin";
       });
     } else {
       Swal.fire({
@@ -87,6 +87,9 @@ const TablePayment = () => {
         text: 'Payment updated successfully!',
         icon: 'success',
         confirmButtonText: 'OK',
+      }).then(() => {
+        // Refresh halaman setelah menekan OK pada SweetAlert
+        window.location.reload();
       });
     } catch (error) {
       console.error('Error updating payment:', error);
@@ -101,7 +104,7 @@ const TablePayment = () => {
 
   return (
     <div className="col py-5 px-3">
-      <div className="tabel-admin">
+      <div className="tabel-admin"  style={{ maxHeight: '700px', maxWidth: '1000px', overflowY: 'auto', overflowX: 'auto' }}>
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -110,7 +113,6 @@ const TablePayment = () => {
               <th id="header">Metode Pembayaran</th>
               <th id="header">Status Pembayaran</th>
               <th id="header">Bukti Transfer</th>
-              <th id="header">Kode Admin</th>
               <th id="header">Aksi</th>
             </tr>
           </thead>
@@ -123,7 +125,6 @@ const TablePayment = () => {
                   <td>{payment.metode_pembayaran}</td>
                   <td>{payment.status_pembayaran}</td>
                   <td><a href={payment.bukti_transfer} target="_blank" rel="noopener noreferrer">Lihat Bukti</a></td>
-                  <td>{payment.kode_admin}</td>
                   <td>
                     <button 
                       className="custom-button my-3"

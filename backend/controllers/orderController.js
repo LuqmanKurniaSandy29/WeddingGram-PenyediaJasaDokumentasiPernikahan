@@ -164,8 +164,8 @@ module.exports = {
 
     // Function to initialize the cron job
     initOrderStatusUpdater() {
-        cron.schedule('0 0 * * *', async() => {
-            // This will run every 1 day
+        cron.schedule('*/5 * * * *', async () => {
+            // This will run every 5 minutes
             try {
                 console.log('Running order status update task...');
                 await module.exports.updateOrderStatus();
