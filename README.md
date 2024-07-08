@@ -54,7 +54,7 @@ Target utama WeddingGram adalah calon pengantin yang sedang merencanakan pernika
 
 ## Tahapan Pengerjaan
 
-![Gambar Tahapan Pengerjaan](https://drive.google.com/uc?export=view&id=14st3mxt4KtvM1_78ebRUHZN9lu1X7MZW)
+![Gambar Tahapan Pengerjaan](https://drive.google.com/uc?export=view&id=1f-5fDMs_4ghreNLdekni4xw1BDwQ7Dfm)
 
 ## Dependensi
 
