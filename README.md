@@ -1,6 +1,6 @@
 # WeddingGram
 
-![Gambar Aplikasi](https://drive.google.com/uc?export=view&id=1f-5fDMs_4ghreNLdekni4xw1BDwQ7Dfm)
+![Gambar Aplikasi](https://drive.google.com/uc?export=view&id=1riWI9vIe_zWJXvuefsHD61sRY72Kwyp1)
 
 WeddingGram adalah aplikasi berbasis web yang dirancang khusus untuk memfasilitasi pemesanan jasa penyedia dokumentasi foto, video, dan berbagai layanan pendukung lainnya dalam pernikahan. Aplikasi ini hadir untuk memastikan momen-momen istimewa dalam pernikahan dapat tertangkap dengan sempurna dan mudah diakses.
 
